@@ -1,0 +1,82 @@
+<?php
+$container = Zend_Registry::get('Admin_Navigation');
+$pages = $container->toArray();
+$parentCount = count($pages);
+$this->contentPane()->captureStart('headline', array('region' => 'top')); 
+?>
+<div dojoType="dijit.MenuBar" id="navMenu">
+<?php 
+for ($i = 0; $i < $parentCount; $i++) {
+?>
+    <?php 
+    if(!count($pages[$i]['pages'])) {
+    ?>
+        <div dojoType="dijit.MenuBarItem">
+            <script type="dojo/event" event="onClick">
+			     dojo.addOnLoad(function() { 
+                    dojo.publish("updateStatus", ["Testing status updates"]);
+				    dojo.xhrGet({
+                        url: "<?php echo $pages[$i]['uri']; ?>",
+                    	handleAs: "text",
+                    	load: function(response) {
+                        		var appWorkSpace = dijit.byId('appWorkSpace');
+                                    appWorkSpace.set('content', response);
+                                    dojo.publish("updateStatus", ["50%"]);
+                    	}
+                	});
+				 });
+			</script>
+			<span>
+            <?php 
+                echo $pages[$i]['label'];
+            ?>
+            </span>
+        </div>
+    <?php 
+    }
+    elseif(count($pages[$i]['pages'])) {
+        $childCount = count($pages[$i]['pages']);
+    ?>
+        <div dojoType="dijit.PopupMenuBarItem">
+            <span>
+                <?php 
+                echo $pages[$i]['label'];
+                ?>
+            </span>
+            <div dojoType="dijit.Menu">
+                <?php
+                    for ($n = 0; $n < $childCount; $n++) {
+//echo $pages[$i]['uri']
+                ?>
+                        <div dojoType="dijit.MenuItem"<?php echo !empty($pages[$i]['pages'][$n]['iconClass']) ? ' iconClass="'.$pages[$i]['pages'][$n]['iconClass'].'"' : ''; ?>>
+                            <script type="dojo/event" event="onClick">
+                                dojo.addOnLoad(function() { 
+				                    dojo.xhrGet({
+                                        url: "<?php echo $pages[$i]['pages'][$n]['uri']; ?>",
+                    	                handleAs: "text",
+                    	                load: function(response) {
+                        		                  var appWorkSpace = dijit.byId('appWorkSpace');
+                                                      appWorkSpace.set('content', response);
+                                                      dojo.publish("updateStatus", ["50%"]);
+                    	                }
+                	               });
+				                });
+                            </script>
+                            <span>
+                                <?php 
+                                echo $pages[$i]['pages'][$n]['label'];
+                                ?>
+                            </span>
+                        </div>
+                    <?php 
+                    continue;
+                    }
+                    ?>
+            </div>
+	    </div>
+    <?php 
+    }	
+}
+?>
+</div>
+<?php echo $this->contentPane()->captureEnd('headline'); ?>

@@ -1,0 +1,34 @@
+<?php
+if(isset($this->messages) && is_array($this->messages)) {
+	echo implode($this->messages);
+}
+elseif(isset($this->messages) && !is_array($this->messages)) {
+	echo $this->messages;
+}
+?>
+<?php
+if(isset($this->paginator) && ($this->paginator instanceof Zend_Paginator)) {
+	$this->partialLoop()->setObjectKey('model');
+	echo $this->partialLoop('menu/partials/ui-item.phtml', $this->paginator);
+
+	if($this->paginator->count() > 1) {
+		echo $this->paginationControl($this->paginator, 'Sliding', 'menu/partials/ui-pagination-control.phtml');
+	}
+}
+//if($this->appSettings->allowUserPostNew && $this->acl->isAllowed($this->user->role, $this->module,  'testimonials.post.new') || $this->acl->isAllowed($this->user->role, $this->module,  'testimonials.manage') ) {
+	?>
+		<a class="button" href="/admin/menu/item/create">Create New Item</a>
+<?php
+	//}
+?>
+
+<?php
+$this->headStyle()->captureStart();
+?>
+.ui-menu-entry {
+margin: 2.5% 2.5% 2.5% 2.5%;
+
+}
+<?php
+$this->headStyle()->captureEnd();
+?>

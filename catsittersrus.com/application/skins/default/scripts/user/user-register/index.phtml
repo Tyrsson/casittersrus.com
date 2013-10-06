@@ -1,0 +1,40 @@
+<div id="page-content" class="prefix_4 grid_8">
+	<div class="ui-login ui-corner-all">
+		<div class="ui-widget-header ui-corner-top ui-button-text">
+			<h2>Register</h2>
+		</div>
+	    <div class="ui-helper-clearifx ui-widget-content ui-corner-bottom">
+			<div class="box">
+			<?php
+			if($this->appSettings->enableRegistration) {
+			
+			    if(isset($this->form)) {
+			?>
+			
+			<?php //echo strtoupper($this->form->getName()); ?>
+			
+			<?php
+			        if(isset($this->messages) || isset($this->message)) {
+			
+			    	    if(is_array($this->messages)) {
+			
+			    		    echo '<span>', implode($this->messages) ,'</span>';
+			
+			    	    }
+			    	    else {
+			    		    echo $this->message;
+			    	    }
+			        }
+			    	echo $this->form;
+			    }
+			
+			} else {
+			?>
+			<span id="registration-diasabled" class="system-message">Registration is Disabled</span>
+			<?php
+			}
+			?>
+			</div>
+		</div>
+	</div>
+</div>

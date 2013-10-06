@@ -1,0 +1,17 @@
+<config>
+	<testimonials>
+		<testimonials>
+			<label>Testimonials</label>
+			<uri>/testimonials</uri>
+			<order>3</order>
+		</testimonials>
+	</testimonials>
+	<admin-testimonials>
+		<testimonialsadmin>
+			<label>Approve Testimonials</label>
+			<uri>/admin/testimonials</uri>
+			<resource>testimonials</resource>
+			<privilege>testimonials.manage</privilege>
+		</testimonialsadmin>
+	</admin-testimonials>
+</config>

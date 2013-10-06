@@ -1,0 +1,25 @@
+<div class="<?php echo $this->codeClass;?>">
+			<div class="system-message">
+				<p>
+					<?php echo $this->message ?>
+				</p>
+			</div>
+			<p>It might help to start from the <a href="/">homepage.</a></p>
+  			<?php
+  			if (isset($this->exception)) { ?>
+
+  			<h3>Exception information:</h3>
+  			<p>
+      			<b>Message:</b> <?php echo $this->exception->getMessage(); ?>
+  			</p>
+
+  			<h3>Stack trace:</h3>
+  			<pre><?php echo $this->exception->getTraceAsString(); ?></pre>
+
+  			<h3>Request Parameters:</h3>
+  			<pre><?php echo $this->escape(var_export($this->request->getParams(), true)); ?></pre>
+
+  			<?php
+            }
+            ?>
+</div>

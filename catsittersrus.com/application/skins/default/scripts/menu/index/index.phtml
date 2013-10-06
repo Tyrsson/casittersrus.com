@@ -1,0 +1,69 @@
+<?php
+//$this->headScript()->prependFile('/js-src/jquery-core/plugins/paginator.js', 'text/javascript');
+//$this->headScript()->offsetSetFile(7, $this->baseUrl() . '/js-src/menu.js', 'text/javascript');
+$this->jQuery()->enable();
+$this->jQuery()->uiEnable();
+?>
+<?php
+
+echo $this->recentMedia();
+
+?>
+<div class="grid-80 tablet-grid-100 mobile-grid-100 right-column">
+
+<div id="menu" class="grid-100">
+	<div class="oswald grid-100 tablet-grid-100 mobile-grid-100">
+		<h2><?php echo ucfirst($this->module); ?></h2>
+		<img width="162" height="3" src="./skins/theridge/images/horizontal_line.png" />
+	</div>
+	<div id="menu-tab-container">
+		<ul>
+		<?php
+		// this builds the menu ;)
+		foreach($this->children as $link) {
+		?>
+			<li>
+			<?php
+			echo '<a href="'.$this->url(array('parentCat' => $this->cats->fetchParentNameByChildName($link->name), 'childCat' => $link->name,), 'menu_index', false, false) . '"><span>'.$link->name.'</span></a>';
+			?>
+			<?php
+			/*
+			echo $this->ajaxLink($link->name, $this->url(array(
+															'parentCat' => $this->cats->fetchParentNameByChildName($link->name),
+															'childCat' => $link->name,
+												 ), 'menu_index', false, false), array('update' => '#paged-data', 'noscript' => true));
+
+			*/
+			?>
+			</li>
+			<?php
+			}
+			?>
+		</ul>
+	</div>
+
+</div>
+
+</div><!-- end right column -->
+
+<!-- <div id="sub-cat-nav" style="float:left;">
+	<ul>
+		<?php
+		// this builds the menu ;)
+		//foreach($this->children as $link) {
+		?>
+		<li>
+		<?php
+		/*echo $this->ajaxLink($link->name, $this->url(array(
+														'parentCat' => $this->cats->fetchParentNameByChildName($link->name),
+														'childCat' => $link->name,
+											 ), 'menu_index', false, false), array('update' => '#paged-data', 'noscript' => true));*/ ?>
+		</li>
+		<?php
+		//}
+		?>
+	</ul>
+</div> -->
+
+
+

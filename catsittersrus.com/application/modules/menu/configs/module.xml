@@ -1,0 +1,19 @@
+<configs>
+    <menu>
+        <menu-index>
+            <label>Menu</label>
+            <uri>/menu</uri>
+            <order>2</order>
+        </menu-index>
+    </menu>
+	<admin-menu>
+        <manage-menu>
+            <label>Manage menu</label>
+		    <uri>/admin/menu/html</uri>
+		    <resource>resources.admin.menu</resource>
+            <privilege>admin.manage.menu</privilege>
+            <order>9998</order>
+            <class>menuitem</class>
+        </manage-menu>
+    </admin-menu>
+</configs>

@@ -1,0 +1,15 @@
+<div class="ui-admin-userlist">
+	<?php
+	if ($this->paginator instanceof Zend_Paginator) {
+
+			$this->partialLoop()->setObjectKey('model');
+
+	        echo $this->partialLoop('user/admin-userlist-ui-widget.phtml', $this->paginator);
+
+			if($this->paginator->count() > 1) {
+					echo $this->paginationControl($this->paginator,'Sliding','pagination_control_admin.phtml');
+	        }
+
+	}
+	?>
+</div>

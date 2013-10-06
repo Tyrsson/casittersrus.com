@@ -1,0 +1,9 @@
+<?php
+if(isset($this->images) && !empty($this->images)) {
+    foreach($this->images as $image) {
+?>
+        <img width="150px" height="150px" src="<?php echo $this->thumbBasePath . '/' . $image->albumName . '/' . $image->fileName; ?>" alt="<?php echo (isset($image->alt) && !empty($image->alt)) ? $image->alt : '';?>"  title="add title if set" />
+<?php 
+    }
+}
+?>

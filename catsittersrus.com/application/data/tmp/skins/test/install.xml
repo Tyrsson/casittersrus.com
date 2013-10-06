@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <install>
+        <skinName>test</skinName>
+        <settings>
+            <skinVersion>1.1.0</skinVersion>
+            <appVersion>1.1.0</appVersion>
+            <config>settings.ini</config>
+        </settings>
+    </install>
+</config>

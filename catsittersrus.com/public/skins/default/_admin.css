@@ -1,0 +1,46 @@
+.grid-container {
+	max-width:97%;
+}
+.ui-widget-header h2 {
+	padding-left: 10px;
+}
+/**** ADMIN FORMS ****/
+.ui-widget-content dl.zend_form {
+	padding:20px;
+}
+/* Form Label containers */
+.ui-widget-content dl.zend_form dt {
+	margin-bottom: 5px;
+}
+/*************************
+ * Form input containers *
+ ************************/
+.ui-widget-content dl.zend_form dd {
+	margin-bottom: 5px;
+}
+/*************************
+ * Admin User List Style *
+ ************************/
+.ui-admin-userlist .ui-widget {
+	margin-top: 1em;
+}
+.ui-admin-userlist .ui-widget:last-child {
+	margin-bottom:1em;
+}
+.ui-admin-userlist .ui-widget ul {
+
+}
+.ui-admin-userlist .ui-widget ul li div {
+
+}
+
+
+
+
+
+
+
+
+
+
+

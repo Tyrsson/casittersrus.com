@@ -1,0 +1,29 @@
+<configs>
+<contact>
+        <contact-index>
+            <label>Contact Us</label>
+            <uri>/contact</uri>
+            <order>4</order>
+        </contact-index>
+    </contact>
+    <admin-contact>
+        <manage-contact>
+            <label>Manage Contact</label>
+		    <uri>/admin/contact</uri>
+		    <resource>resources.admin.contact</resource>
+            <privilege>admin.manage.contact</privilege>
+            <order>9998</order>
+            <class>menuitem</class>
+            	<pages>
+            	    <admin-newsletter-export>
+                		<label>Export Addresses</label>
+		    			<uri>/admin/contact/newsletter/export</uri>
+		    			<resource>resources.admin.contact</resource>
+            			<privilege>admin.manage.contact</privilege>
+            			<class>menuitem</class>
+            			<order>9999</order>
+            		</admin-newsletter-export>
+            	</pages>
+        </manage-contact>
+    </admin-contact>
+</configs>

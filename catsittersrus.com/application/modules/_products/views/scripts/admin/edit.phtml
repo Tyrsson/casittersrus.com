@@ -1,0 +1,27 @@
+<h2>Edit Product</h2>
+<div class="content">
+<?php
+if(isset($this->form))
+{
+	echo $this->form;
+	echo $this->setupEditor ('description', $options = null);
+}
+if(isset($this->message) || isset($this->messages)) :
+echo $this->message;
+endif;
+?>
+
+<?php
+$this->headStyle()->captureStart();
+?>
+#content_container {
+	margin: 0 1.25em 0.25em 0;
+	height:auto;
+	width:100%;
+	padding: 0.25em;
+	float:left;
+}
+<?php
+$this->headStyle()->captureEnd();
+?>
+</div>

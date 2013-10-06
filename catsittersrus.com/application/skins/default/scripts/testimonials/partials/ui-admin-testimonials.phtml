@@ -1,0 +1,16 @@
+<div class="item">
+	<div class="ui-widget-header ui-corner-top">
+		<h4>
+		<a class="edit-button" href="/admin/testimonials/edit/<?php echo $this->model->id; ?>"></a>
+		<a class="delete-button" href="/admin/testimonials/delete/<?php echo $this->model->id; ?>"></a>
+		</h4>
+	</div>
+	<div class="ui-widget-content ui-corner-bottom">
+ 		<ul>
+ 			<li>Posted by <?php echo $this->model->guestName; ?></li>
+			<li><?php echo $this->model->content; ?></li>
+			<li>Posted on: <span><?php echo new Zend_Date($this->model->createdDate, Zend_Date::TIMESTAMP); ?></span></li>
+		</ul>
+  	</div>
+</div>
+

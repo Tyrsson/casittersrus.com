@@ -1,0 +1,18 @@
+<div class="ui-media-albumlist ui-helper-clearfix">
+	<?php
+	if ($this->paginator instanceof Zend_Paginator) {
+
+			$this->partialLoop()->setObjectKey('model');
+
+	        echo $this->partialLoop('/partials/ui-albums.phtml', $this->paginator);
+
+			if($this->paginator->count() > 1) {
+				echo $this->paginationControl($this->paginator,'Sliding','ui-pagination-control.phtml');
+	        }
+
+	}
+	?>
+</div>
+
+
+

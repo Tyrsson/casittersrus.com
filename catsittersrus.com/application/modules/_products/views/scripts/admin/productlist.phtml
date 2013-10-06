@@ -1,0 +1,43 @@
+<div class="full">
+	<h2>Browse Products</h2>
+	<div class="content">
+    <form class="checklist-li">
+				<ul class="list">
+    	
+    	<?php if (count($this->paginator)): 
+    			$i=0;
+				foreach($this->paginator as $product): 
+			 
+                        
+				$class = "";
+				$class.= ($i%2==0) ? 'alt ' : '';
+				$class = !empty($class) ? ' class="' . $class . '" ' : '';
+       
+       $featured = '';
+       $product->featured === '0' ? $featured = 'No' : $featured = 'Yes';
+       
+       ?>
+       <li<?php echo $class?> id="product<?php echo $product->productId?>">
+       	<label>
+       		<strong><a href="/admin/vendors/edit/<?php echo $product->productId?>"><?php echo $product->name?></a></strong></label>
+            <p>Product identification number:&nbsp;<?php echo $product->ident;?></p>
+            <p>Featured Product:&nbsp;<?php echo $featured;?></p>
+            <a href="/admin/vendors/delete/<?php echo $product->productId?>" class="delete" title="delete <?php echo $product->name?>" rel="popup">delete</a>
+            <a href="/admin/vendors/edit/<?php echo $product->productId?>" class="edit" title="edit <?php echo $product->name?>">edit</a>
+       </li>
+       <?php
+		$i++; endforeach;endif;
+        ?>
+        
+        <?php if((count($this->paginator)) <= 0){
+            echo '<li class="alt warning">No products to display</li>';
+         } ?>
+    
+    </ul>
+    </form>
+    <?php echo $this->paginationControl($this->paginator,'Sliding','pagination_control_admin.phtml'); ?>
+    
+    <a href="/admin/products/create" class="publish" tabindex="1"><strong>Add New Product</strong></a>
+		
+	</div>
+</div>

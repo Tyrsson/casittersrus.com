@@ -1,0 +1,9 @@
+<li class="panel<?php echo $this->partialCounter; ?>">
+	<img src="/modules/slider/images/<?php echo $this->model->fileName; ?>" alt="<?php echo !empty($this->model->alt) ? $this->model->alt : 'Image and alt not found'; ?>" />
+	<div class="caption-bottom">
+		<span class="slider-title"><?php echo !empty($this->model->alt) ? $this->model->alt : 'Title not found for this image'; ?></span>
+		<p class="slider-description">
+			<?php echo !empty($this->model->description) ? $this->model->description : 'Description not found for this image'; ?>
+		</p>
+	</div>
+</li>

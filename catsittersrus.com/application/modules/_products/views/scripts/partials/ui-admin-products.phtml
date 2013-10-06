@@ -1,0 +1,17 @@
+<div class="item">
+	<div class="ui-widget-header ui-corner-top">
+		<h4>
+		<a class="edit-button" href="/admin/products/edit/<?php echo $this->model->productId; ?>"></a>
+		<a class="delete-button" href="/admin/products/delete/<?php echo $this->model->productId; ?>"></a>
+		</h4>
+	</div>
+	<div class="ui-widget-content ui-corner-bottom">
+ 		<ul>
+ 			<li>Product Name: <?php echo $this->model->name; ?></li>
+			<li><span>Stock Status: <?php echo $this->model->stockStatus; ?></span></li>
+			<li>Current Thumbnail: <img src="/products/catalog/products/thumbs/<?php echo $this->model->thumbnail; ?>" /></li>
+			<li><span>Short Description:</span><p><?php echo $this->model->shortDescription; ?></p></li>
+		</ul>
+  	</div>
+</div>
+

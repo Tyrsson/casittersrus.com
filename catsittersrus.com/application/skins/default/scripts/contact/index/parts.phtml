@@ -1,0 +1,12 @@
+<div class="ui-widget-content">
+	<div class="ui-pages">
+		<div class="ui-pages-heading">
+			<h2><?php //echo ($this->appSettings->showPageHeading) ? ucwords( $this->page['pageName'] ) : ''; ?></h2>
+		</div>
+		<?php
+		if(isset($this->form)) {
+			echo $this->form;
+		}
+		?>
+	</div>
+</div>

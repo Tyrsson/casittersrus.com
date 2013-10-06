@@ -1,0 +1,4 @@
+<?php 
+$container = Zend_Registry::get('Admin_Navigation');
+echo $this->navigation()->menu()->renderPartial($container, '/partials/dojo-nav.phtml');
+?>

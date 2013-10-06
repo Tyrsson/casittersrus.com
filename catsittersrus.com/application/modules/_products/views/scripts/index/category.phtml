@@ -1,0 +1,40 @@
+<div id="content">
+
+	<h4><?php echo $this->cat->name; ?></h4>
+
+	<div id="hm-prod">
+				<h3>CATEGORIES</h3>
+
+				<?php
+				echo $this->partialLoop('catmenu.phtml', $this->cats);
+				?>
+	</div>
+	
+		<div id="product-area">
+		    <div id="listing" style="width:590px; float:right;">
+        	        <?php 
+        	        Zend_Debug::dump($this->appSettings);
+        	        if (count($this->paginator) >= 1) {
+    				    foreach($this->paginator as $product) {
+                    ?>
+                        <div class="product-box">
+    					    <a href="/products/display/<?php echo $product->productId; ?>">
+    					        <img src="<?php echo ( isset($product->image) && !empty($product->image) ) ? $product->image : '/images/prod-placeholder.png'; ?>" alt="product" width="146" height="121" />
+    					    </a>
+    					    <h6><?php echo $product->name; ?></h6>
+                        </div>
+                  <?php } ?>
+                        
+              <?php } ?>
+        <?php if((count($this->paginator)) <= 0){
+            echo '<li class="alt warning">No products to display</li>';
+         } ?>
+				
+					
+		    </div>
+		    <div id="paginator-wrapper" style="width:60%; float:right; text-align:center"><?php echo $this->paginationControl($this->paginator,'Sliding','pagination_control.phtml'); ?></div>
+		    <div style="clear:both;"></div>	
+		    
+		</div>
+	
+</div>

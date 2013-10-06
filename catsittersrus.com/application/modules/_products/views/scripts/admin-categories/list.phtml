@@ -1,0 +1,38 @@
+<div class="full">
+	<h2>Categories</h2>
+	<div class="content">
+    <form class="checklist-li">
+				<ul class="list">
+    	<?php 		
+		$i=0; foreach($this->paginator as $row):
+                        
+			$class = "";
+			$class.= ($i%2==0) ? 'alt ' : '';
+			$class = !empty($class) ? ' class="' . $class . '" ' : '';
+        ?>
+        	<li<?php echo $class; ?> id="vendor<?php echo $row->categoryId; ?>">
+            	<label>
+                <strong><a href="/admin/categories/edit/<?php echo $row->categoryId; ?>"><?php echo $row->name; ?></a></em></strong></label>
+                <a href="/admin/categories/delete/<?php echo $this->pageNumber; ?>/<?php echo $row->categoryId; ?>" class="delete" author="delete <?php echo $row->name; ?>" rel="popup">delete</a>
+                <a href="/admin/categories/edit/<?php echo $row->categoryId; ?>" class="edit" author="edit <?php echo $row->name; ?>">edit</a>
+                
+                <!--  <a href="/admin/guestbook/approve/<?php //echo $this->pageNumber; ?>/<?php //echo $entry->categoryId; ?>">Approve</a>-->
+            </li>    
+        <?php
+		$i++; endforeach;
+        ?>
+        
+        <?php if((count($this->paginator)) <= 0){
+            
+            echo '<li class="alt warning">No Categories to display</li>';
+         } ?>
+    
+    </ul>
+    </form>
+    <?php echo $this->paginationControl($this->paginator,'Sliding','pagination_control_admin.phtml'); ?>
+    
+    <a href="/admin/categories/create" class="publish" tabindex="1"><strong>Add New Category</strong></a>
+		
+	</div>
+</div>
+

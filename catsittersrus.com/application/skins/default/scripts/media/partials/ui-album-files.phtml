@@ -1,0 +1,10 @@
+<?php
+$albums = new Media_Model_Albums();
+$album = $albums->fetchById($this->model->albumId);
+?>
+<div class="ui-widget ui-widget-content ui-corner-all thumb" data-hoverdesc="<?php echo (isset($this->model->description) && $this->model->description !== null  ? $this->model->description : 'This image does not currently have a description.'); ?>">
+	<a class="popup" href="<?php echo '/modules/media/images/' .$album->albumName. '/'.$this->model->fileName; ?>" title="<?php echo (isset($this->model->title) && $this->model->title !== null  ? $this->model->title : $this->model->fileName); ?>">
+		<img src="<?php echo '/modules/_thumbs/Media/' .$album->albumName.  '/' . $this->model->fileName ;?>" alt="<?php echo (isset($this->model->alt) && $this->model->alt !== null  ? $this->model->alt : $this->model->fileName); ?>">
+	</a>
+	<h3><?php echo (isset($this->model->title) && $this->model->title !== null  ? $this->model->title : $this->model->fileName); ?></h3>
+</div>

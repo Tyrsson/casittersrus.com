@@ -1,0 +1,52 @@
+<?php
+$appSettings = Zend_Registry::get('appSettings');
+$title = 'Test Title';
+?>
+<?php
+//Zend_Debug::dump($appSettings);
+if($appSettings->enableOnHoverDescriptions) {
+?>
+<div class="thumb grid_4"
+	<?php if($appSettings->showFileDescription) { ?>
+	data-hoverdesc="<?php echo !empty($this->model->description) && $this->model->description !== null  ? $this->model->description : 'This image does not currently have a description.'; ?>"
+	<?php }?>
+>
+	<a class="popup" href="<?php echo '/modules/media/images/' .$this->model->albumName. '/'.$this->model->fileName; ?>" title="<?php echo (isset($this->model->title) && $this->model->title !== null  ? $this->model->title : $this->model->fileName); ?>">
+		<img src="<?php echo '/modules/_thumbs/Media/' .$this->model->albumName.  '/' . $this->model->fileName ;?>" alt="<?php echo (isset($this->model->alt) && $this->model->alt !== null  ? $this->model->alt : $this->model->fileName); ?>">
+		<?php
+		if($appSettings->showTitlesInRecentWidget) {
+		?>
+		<span class="media-title"><?php echo (isset($this->model->title) && $this->model->title !== null  ? $this->model->title : $this->model->fileName); ?></span>
+		<?php
+		}
+		?>
+	</a>
+</div>
+<?php
+}
+elseif( ! $appSettings->enableOnHoverDescriptions ) {
+?>
+<div class="thumb grid_4">
+	<a class="popup" href="<?php echo '/modules/media/images/' .$this->model->albumName. '/'.$this->model->fileName; ?>" title="<?php echo (isset($this->model->title) && $this->model->title !== null  ? $this->model->title : $this->model->fileName); ?>">
+		<img src="<?php echo '/modules/_thumbs/Media/' .$this->model->albumName.  '/' . $this->model->fileName ;?>" alt="<?php echo (isset($this->model->alt) && $this->model->alt !== null  ? $this->model->alt : $this->model->fileName); ?>">
+		<?php
+		if($appSettings->showTitlesInRecentWidget) {
+		?>
+		<span class="media-title"><?php echo (isset($this->model->title) && $this->model->title !== null  ? $this->model->title : $this->model->fileName); ?></span>
+		<?php
+		}
+		?>
+	</a>
+	<?php
+	if($appSettings->showFileDescription) {
+	?>
+	<p class="media-recent-widget-desc">
+	<?php echo !empty($this->model->description) && $this->model->description !== null  ? $this->model->description : 'This image does not currently have a description.'; ?>
+	</p>
+	<?php
+	}
+	?>
+</div>
+<?php
+}
+?>

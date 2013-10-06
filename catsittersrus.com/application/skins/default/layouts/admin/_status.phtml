@@ -1,0 +1,8 @@
+
+<?php
+if(isset($this->messages) && is_array($this->messages)) {
+    echo implode($this->messages);
+}
+elseif(isset($this->messages) && !is_array($this->messages) && is_string($this->messages)) {
+    echo $this->messages;
+}

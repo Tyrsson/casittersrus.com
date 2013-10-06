@@ -1,0 +1,75 @@
+<div data-dojo-id="pagePane" data-dojo-type="dijit/layout/ContentPane" region="top" splitter="true">
+
+<div data-dojo-type="dijit/layout/BorderContainer" design="headline" gutters="false" style="z-index: 0; width: 100%; height: 100%;">
+		<div data-dojo-id="pageHeaderPane" data-dojo-type="dijit/layout/ContentPane" region="top" splitter="true">
+		Page Title
+		</div>
+		
+		<div data-dojo-id="pageBodyContentPanel" data-dojo-type="dijit/layout/ContentPane" region="center" splitter="false">
+		  <?php
+			if(isset($this->page) && $this->page !== null) {
+			?>
+
+	<?php
+	// home page setting
+	if($this->appSettings->showHomeTextContent)
+	{
+	?>
+
+				<h2><?php echo ($this->appSettings->showPageHeading) ? ucwords( $this->page['pageName'] ) : ''; ?></h2>
+
+			<?php
+
+			if($this->acl->isAllowed($this->user->role, $this->module, "$this->module.manage")) {
+			?>
+
+				<span><a class="create-button" href="/admin/pages/create"></a></span>
+				<span><a class="edit-button" href="/admin/pages/edit/<?php echo $this->page['pageUrl']; ?>"></a></span>
+				<?php
+				if(!$this->isHome) {
+				?>
+				<span><a class="delete-button" href="/admin/pages/delete/<?php echo $this->page['pageUrl']; ?>"></a></span>
+				<?php
+				}
+				?>
+
+
+			<?php
+			}
+			?>
+
+			<?php echo $this->page['pageText']; ?>
+
+
+	<?php
+	}
+	?>
+		<?php
+		if(isset($this->widgets)) {
+		    foreach($this->widgets as $widgetData) {
+				echo $this->action($widgetData->action, $widgetData->controller, $widgetData->module);
+			}
+		}
+		if($this->appSettings->showRecentImagesOnHome) {
+	        //echo $this->action('recent', 'widget', 'media', array('mediaType' => 'images'));
+	    }
+		?>
+		<?php
+		if($this->showFb) {
+		//echo $this->faceBookHelper($this->fb, $fbTitle = $this->page['pageName'], $fbType = null, $fbUrl = null, $fbImage = null, $fbsiteName = null, $type = 'page');
+		}
+		?>
+
+<?php
+} else {
+// page would be null
+}
+?>
+		</div>
+		<div data-dojo-id="pageFooterPane" data-dojo-type="dijit/layout/ContentPane" region="bottom" splitter="true">
+		System Messages
+		</div>
+	</div>
+
+
+</div>

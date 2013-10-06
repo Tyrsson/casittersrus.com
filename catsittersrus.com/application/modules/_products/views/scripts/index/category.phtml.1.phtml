@@ -1,0 +1,28 @@
+<div id="content">	
+	<h2><?php echo ucwords(str_replace('_', ' ', $this->cat->name)); ?></h2>
+		<div>
+		<?php if (count($this->paginator)): ?>
+			<ul id="product-list">
+			<?php foreach($this->paginator as $product): 
+       				if($product->productId > 0) : ?>
+       				<li>
+						<?php if($product->image !== ''){
+						
+						?>
+							<img src="<?php echo $product->image; ?>" />
+						<?php }else{?>
+							<img src="http://dummyimage.com/126x101/8B5629/fff.png&text=No+Image+Selected" />
+						<?php }?>
+						<h4><?php echo $product->ident;?></h4>
+						<a href="/products/display/<?php echo $product->productId;?>">Details</a>	
+					</li>
+        			<?php endif;
+				endforeach; 
+			endif; ?>
+        	</ul>
+		</div>
+<div id="paginator">
+<?php echo $this->paginationControl($this->paginator, 'Sliding', 'pagination_control.phtml'); ?>
+</div>
+		
+</div>		

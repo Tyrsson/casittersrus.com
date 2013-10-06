@@ -1,0 +1,41 @@
+<div id="content">
+	<h4>All Products </h4>
+	<div id="hm-prod">
+		<h3>CATEGORIES</h3>
+		<?php echo $this->partialLoop('catmenu.phtml', $this->cats); ?>
+	</div>
+<?php
+$maxImageWidth = Zend_Registry::get('maxImageWidth');
+
+if (isset($this->categories) && is_object($this->categories) || is_array($this->categories)) {
+?>
+	<div id="product-area">
+		<!-- <div id="product-area"> -->
+			<p class="product-intro">Listing of all products. For product listings for a specific category, please choose from the list on the left. Duis bibendum mi nec dolor bibendum et pharetra neque elementum. Morbi urna metus, sollicitudin vitae facilisis nec, bibendum et nisi.</p>
+<?php
+	if (count($this->paginator)) {
+		$i = 0;
+		foreach ($this->paginator as $product) {
+?>
+				<div class="product-listing">
+					<a href="/products/display/<?php echo $product->productId; ?>"><img src="<?php if (is_file($_SERVER['DOCUMENT_ROOT'] . $product->image)) echo $product->image; else echo '/images/prod-placeholder.png'; ?>" alt="product" width="146" height="121" /></a>
+					<p><?php echo $product->name; ?></p>
+				</div>
+<?php
+			$i++;
+		}
+	}
+?>
+<?php
+	if ((count($this->paginator)) <= 0) {
+		echo '<li class="alt warning">No products to display</li>';
+	}
+
+	echo $this->paginationControl($this->paginator,'Sliding','pagination_control.phtml');
+?>
+		<!-- </div> -->
+	</div>
+<?php
+}
+?>
+</div>

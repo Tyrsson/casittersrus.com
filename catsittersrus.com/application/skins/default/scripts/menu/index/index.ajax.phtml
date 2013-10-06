@@ -1,0 +1,17 @@
+
+<?php
+	if($this->data instanceof Zend_Paginator) {
+		//Zend_Debug::dump($this->data);
+?>
+		<div class="data">
+			<?php
+			$this->partialLoop()->setObjectKey('model');
+			echo $this->partialLoop('menu/partials/ui-item.phtml', $this->data);
+
+	    	echo $this->paginationControl($this->data, 'Sliding', 'menu/partials/ui-ajaxed-pagination-control.phtml', $this->urlOptions);
+
+	    	?>
+		</div>
+<?php
+	}
+?>

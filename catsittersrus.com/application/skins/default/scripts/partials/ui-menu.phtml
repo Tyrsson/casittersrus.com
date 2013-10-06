@@ -1,0 +1,27 @@
+<?php
+$this->acl = Zend_Registry::get('acl');
+
+?>
+<div class="ui-menu-entry ui-corner-all">
+	<div class="ui-widget-header ui-corner-top">
+		<h4>
+		<?php echo $this->model->name; ?>
+		<?php
+		if( $this->acl->isAllowed( Zend_Auth::getInstance()->getIdentity()->role, 'resources.admin.menu', 'admin.manage.menu') ) {
+		?>
+		<a class="delete-button" href="/admin/menu/delete/<?php echo $this->model->id; ?>"></a>
+		<a class="edit-button" href="/admin/menu/edit/<?php echo $this->model->id; ?>"></a>
+		<?php
+		}
+		?>
+		</h4>
+	</div>
+	<div class="ui-widget-content">
+	<p>Menu name: <?php echo $this->model->name; ?></p>
+	<p>Current menu: <?php echo ( (bool) $this->model->isCurrent) ? 'Yes' : 'No'; ?></p>
+	<?php
+		//echo $this->model->id;
+	?>
+	</div>
+
+</div>

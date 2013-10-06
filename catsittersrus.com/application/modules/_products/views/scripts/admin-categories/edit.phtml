@@ -1,0 +1,25 @@
+
+<div class="full">
+	<h2>Add Category</h2>
+	<div class="content">
+<span id="notice">Notice:&nbsp; Names and Identification values will be normalized for Database storage in the form of: Category One &raquo; category_one</span>
+<?php
+if(isset($this->form))
+{
+    echo $this->form;
+}
+?>
+<?php 
+$this->headStyle()->captureStart();
+?>
+#notice {
+margin: 15px;
+padding:3px;
+color:white;
+}
+<?php 
+$this->headStyle()->captureEnd();
+?>
+
+</div>
+</div>

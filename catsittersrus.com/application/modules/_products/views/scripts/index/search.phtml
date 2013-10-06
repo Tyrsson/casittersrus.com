@@ -1,0 +1,51 @@
+<div id="content">
+	<h4>Product Search Results</h4>
+	<div id="hm-prod">
+		<h3>CATEGORIES</h3>
+		<?php echo $this->partialLoop('catmenu.phtml', $this->cats); ?>
+	</div>
+	<!--
+        <form method="post" action="/products/dosearch" class="sort">
+            <input type="hidden" value="<?php echo $this->term ?>" name="term" />
+            <input type="submit" value="View by Date" name="<?php echo (isset($this->dateOrder) ? $this->dateOrder : 'date-asc'); ?>" />
+            <input type="submit" value="View by Title" name="<?php echo (isset($this->titleOrder) ? $this->titleOrder : 'title-asc'); ?>" />
+        </form>
+-->
+    <?php if(isset($this->error)){
+            echo '<p style="margin-left:20px;">' . $this->error . '</p>';
+        }
+
+$maxImageWidth = Zend_Registry::get('maxImageWidth');
+
+?>
+	<div id="product-area">
+			<p class="product-intro">Search results for <strong>&ldquo;<?php echo $this->term ?>&rdquo;</strong>.</p>
+<?php
+	if (count($this->paginator)) {
+		$i = 0;
+		foreach ($this->paginator as $product) {
+?>
+				<div class="product-listing">
+					<a href="/products/display/<?php echo $product->document_id; ?>"><img src="<?php if (is_file($_SERVER['DOCUMENT_ROOT'] . $product->image)) echo $product->image; else echo '/images/prod-placeholder.png'; ?>" alt="product" width="146" height="121" /></a>
+					<p><?php echo $product->title; ?></p>
+				</div>
+<?php
+			$i++;
+		}
+	echo $this->paginationControl($this->paginator,'Sliding','pagination_control.phtml', array('page' => $this->page));
+	}
+?>
+<?php
+	if ((count($this->paginator)) <= 0) {
+		echo '<li class="alt warning">No products to display</li>';
+	}
+
+	//echo $this->paginationControl($this->paginator,'Sliding','pagination_control.phtml', array('page' => $this->page));
+?>
+		<!-- </div> -->
+	</div>
+
+
+
+
+</div>

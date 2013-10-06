@@ -1,0 +1,72 @@
+<?php
+if($this->showCats) {
+?>
+<div class="ui-widget-content ui-helper-clearfix">
+	<div class="ui-categories-index grid_8">
+		<?php
+		// we can loop this
+		if($this->categories instanceof Zend_Paginator) {
+		?>
+
+			<?php
+			$this->partialLoop()->setObjectKey('model');
+			echo $this->partialLoop('/partials/categories.phtml', $this->categories);
+			//Zend_Debug::dump($this->categories);
+			?>
+
+			<?php
+			if($this->categories instanceof Zend_Paginator) {
+				if($this->categories->count() > 1) {
+					echo $this->paginationControl($this->categories, 'Sliding', '/partials/ui-pagination-control.phtml');
+				}
+			}
+			?>
+
+		<?php
+		} else { // end loop for all category display, start display of single category
+		?>
+
+		<?php
+		}
+		?>
+	</div>
+</div>
+<?php
+}
+?>
+<?php
+if($this->showProducts) {
+?>
+<div class="ui-widget-content ui-helper-clearfix">
+	<div class="ui-categories-index grid_8">
+		<?php
+		// we can loop this
+		if($this->products instanceof Zend_Paginator) {
+		?>
+
+			<?php
+			$this->partialLoop()->setObjectKey('model');
+			echo $this->partialLoop('/partials/products.phtml', $this->products);
+			//Zend_Debug::dump($this->categories);
+			?>
+
+			<?php
+			if($this->products instanceof Zend_Paginator) {
+				if($this->products->count() > 1) {
+					echo $this->paginationControl($this->products, 'Sliding', '/partials/ui-pagination-control.phtml');
+				}
+			}
+			?>
+
+		<?php
+		} else { // end loop for all category display, start display of single category
+		?>
+
+		<?php
+		}
+		?>
+	</div>
+</div>
+<?php
+}
+?>

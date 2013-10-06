@@ -1,0 +1,23 @@
+<?php
+$this->acl = Zend_Registry::get('acl');
+
+?>
+<div class="ui-menu-entry ui-corner-right">
+	<div class="ui-widget-header">
+		<h4>
+		<?php echo $this->model->name . ' - ' . '$' . $this->model->price; ?>
+		<?php
+		if(Zend_Auth::getInstance()->hasIdentity() && $this->acl->isAllowed( Zend_Auth::getInstance()->getIdentity()->role, 'resources.admin.menu', 'admin.manage.menu') ) {
+		?>
+		<a class="delete-button" href="/admin/menu/item/delete/<?php echo $this->model->id; ?>"></a>
+		<a class="edit-button" href="/admin/menu/item/edit/<?php echo $this->model->id; ?>"></a>
+		<?php
+		}
+		?>
+		</h4>
+	</div>
+	<div class="ui-widget-content">
+	<?php echo $this->model->content; ?>
+	</div>
+
+</div>

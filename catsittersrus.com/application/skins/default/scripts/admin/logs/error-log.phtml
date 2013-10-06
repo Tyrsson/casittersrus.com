@@ -1,0 +1,21 @@
+<?php
+// This needs to display the following info
+/*
+ * columns:
+ * userName, timeStamp, priorityName, priority, message
+ */
+if (isset($this->paginator) && count($this->paginator)) {
+	foreach($this->paginator as $item) {
+?>
+
+
+
+
+
+<?php
+	}
+	echo $this->paginationControl();
+?>
+<?php
+}
+?>

@@ -1,0 +1,43 @@
+<div class="ui-testimonials">
+
+<?php
+	if(isset($this->paginator) && ($this->paginator instanceof Zend_Paginator)) {
+		$this->partialLoop()->setObjectKey('model');
+		echo $this->partialLoop('/partials/ui-admin-testimonials.phtml', $this->paginator);
+
+		if($this->paginator->count() > 1) {
+			echo $this->paginationControl($this->paginator, 'Sliding', 'partials/ui-pagination-control.phtml');
+		}
+	}
+	if($this->appSettings->allowUserPostNew && $this->acl->isAllowed($this->user->role, $this->module,  'testimonials.post.new') || $this->acl->isAllowed($this->user->role, $this->module,  'testimonials.manage') ) {
+?>
+		<a class="button" href="/testimonials/submit">Submit a Testimonial</a>
+<?php
+	}
+?>
+
+</div>
+<?php
+$this->headStyle()->captureStart();
+?>
+.ui-testimonials {
+margin: 1em;
+}
+.item {
+margin-bottom: 1em;
+}
+.ui-testimonials a {
+margin-top: 1em;
+}
+.item .ui-widget-header h4 {
+margin-left:1em;
+}
+.item .ui-widget-content p {
+padding: 1em;
+}
+div.ui-widget-content ul li {
+    margin: 1em;
+}
+<?php
+$this->headStyle()->captureEnd();
+?>

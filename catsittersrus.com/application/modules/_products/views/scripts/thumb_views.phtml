@@ -1,0 +1,17 @@
+<div id="products">
+    
+    <h2>Recent<strong>Products</strong></h2>
+        <?php 
+            foreach ($this->products as $product){ ?>
+                <div id="product">
+                <div id="product-info">
+                    <img src="/assets/images/<?php echo $product->image; ?>" />
+                    <p><?php echo $product->name; ?></p>
+                </div>
+                <div id="product-link">
+                    <a href="<?php echo $product->id; ?>">Add To Cart</a>
+                </div>
+            </div>
+        <?php }?>
+        
+</div>

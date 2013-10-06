@@ -1,0 +1,28 @@
+<?php
+$this->doctype('HTML5');
+$this->headTitle($this->albumName);
+?>
+<div class="ui-media ui-widget prefix_4 grid_8">
+		<div class="ui-widget-header ui-corner-top" data-tooltip="click a thumbnail to view a full-size image">
+			<h2><?php echo $this->albumName; ?></h2>
+		</div>
+		<div class="media-thumbs ui-widget-content ui-corner-bottom ui-helper-clearfix">
+			<?php
+			if(isset($this->paginator) && ($this->paginator instanceof Zend_Paginator)) {
+				$this->partialLoop()->setObjectKey('model');
+				echo $this->partialLoop('/partials/ui-album-files.phtml', $this->paginator);
+
+				if($this->paginator->count() > 1) {
+			?>
+			<div class="ui-helper-clearfix">
+			<?php
+				echo $this->paginationControl($this->paginator, 'Sliding', '/partials/ui-pagination-control.phtml');
+				}
+			?>
+			</div>
+			<?php
+			}
+			?>
+		</div>
+	<div id="dialog"></div>
+</div>

@@ -1,0 +1,29 @@
+<div id="content">
+	<h4>Order Form</h4>
+	<p>Items in your cart will be shown below.</p>
+	<hr>
+	<div id="quote-area">
+		<p class="request">Order Form</p>
+		<dl class="quote">
+<?php
+
+if (isset($this->cartItems)) {
+	foreach ($this->cartItems as $item) {
+?>
+			<dd><?php echo $item->name . ' - ' . $item->ident; ?></dd>
+			<dt><a href="/products/removeitem/<?php echo $item->productId; ?>">Remove</a></dt>
+<?php
+	}
+}
+
+?>
+		</dl>
+	</div>
+	<hr>
+<?php
+if (isset($this->form)) {
+	// $this->form
+	echo $this->form;
+}
+?>
+</div>

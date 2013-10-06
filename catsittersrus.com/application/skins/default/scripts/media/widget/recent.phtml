@@ -1,0 +1,47 @@
+<div class="ui-media-widget media-thumbs ui-widget ui-corner-all">
+	<div class="ui-widget-content ui-helper-clearfix">
+			<?php
+			if(isset($this->paginator) && ($this->paginator instanceof Zend_Paginator)) {
+				$this->partialLoop()->setObjectKey('model');
+				echo $this->partialLoop('/partials/ui-recent-images.phtml', $this->paginator);
+
+				if($this->paginator->count() > 1) {
+					echo $this->paginationControl($this->paginator, 'Sliding', '/partials/ui-pagination-control.phtml');
+				}
+			}
+			?>
+	</div>
+	<div id="dialog"></div>
+</div>
+<?php
+$this->headStyle()->captureStart();
+?>
+.media-thumbs {
+margin-top: 2em;
+}
+.media-thumbs h2 {
+margin-left: 1em;
+}
+.media-thumbs .ui-widget-content {
+border:none;
+}
+.popup img {
+margin:5%;
+width:90%;
+}
+.media-title {
+display:inline-block;
+width:99%;
+margin:0 auto;
+text-align:center;
+color: #437F1E;
+}
+p.media-recent-widget-desc {
+margin-top: 1em;
+margin-left: 1em;
+font-size: .75em;
+line-height: 1.5;
+}
+<?php
+$this->headStyle()->captureEnd();
+?>

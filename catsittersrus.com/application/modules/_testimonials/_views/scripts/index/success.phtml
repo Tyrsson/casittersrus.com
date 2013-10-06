@@ -1,0 +1,35 @@
+<div class="ui-widget ui-corner-all prefix_4 grid_8">
+  <div class="ui-widget-header ui-corner-top">
+		<h2>Thank you for your Testimonial</h2>
+	</div>
+	<div class="ui-widget-content ui-corner-bottom">
+<div id="content">
+	<div id="form">
+		<?php
+		$this->headMeta()->appendHttpEquiv('Refresh', '2;URL=http://'.$_SERVER['SERVER_NAME']);
+		if($this->messages) {
+			echo implode($this->messages);
+		}
+		?>
+	   </div>
+      </div>
+	</div>
+</div>
+<?php $this->headStyle()->captureStart(); ?>
+#content {
+	width: 270px;
+	margin: 80px auto;
+	border: 1px solid #296e00;
+	border-radius: 10px;
+	padding: 30px;
+}
+#form {
+height: auto;
+}
+#success-message {
+width:100%;
+padding:50px;
+line-height:20px;
+}
+h2 {text-align:center;}
+<?php $this->headStyle()->captureEnd(); ?>

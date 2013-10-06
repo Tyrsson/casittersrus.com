@@ -1,0 +1,44 @@
+<?php
+if(isset($this->message))
+{
+	if(is_array($this->message))
+	{
+		if(array_key_exists('prod_exist', $this->message))
+		{
+			echo implode($this->message);
+		}
+	} else {
+		echo $this->message;
+	}
+}
+?>
+<h2>Create Product</h2>
+<div class="content">
+<?php
+if(isset($this->form))
+{
+	echo $this->form;
+}
+echo $this->setupEditor ('description', $options = null, false, 'Products');
+?>
+<?php
+$this->headStyle()->captureStart();
+?>
+#content_container {
+	margin: 0 1.25em 0.25em 0;
+	height:auto;
+	width:100%;
+	padding: 0.25em;
+	float:left;
+}
+.error {
+padding:5px;
+background-color:red;
+color:white;
+font-size:10px;
+font-weight:bold;
+}
+<?php
+$this->headStyle()->captureEnd();
+?>
+</div>

@@ -1,0 +1,68 @@
+<div id="content">
+<?php
+if (isset($this->product)) :
+//Zend_Debug::dump($this->product);
+?>
+<div id="product">
+<?php echo $this->adminLinks($urls = array('edit' => '/admin/products/edit', 'delete' => '/admin/products/delete'), $id = $this->product->productId, $resource = 'admin:area', $priv = 'admin:edit'); ?>
+	<h4><?php echo 'Product Details For:&nbsp;' . $this->product->name; ?></h4>
+	<div id="detail">
+		<img src="<?php echo ( isset($this->product->image) && !empty($this->product->image) ) ? $this->product->image : '/images/prod-placeholder.png'; ?>" alt="No Image" title="Product Image" />
+		<div id="prod-desc">
+			<p class="prod_desc"><?php echo $this->product->shortDescription; ?></p>
+			<p class="pbody"><?php echo isset($this->product->description) ? html_entity_decode(utf8_decode($this->product->description)) : 'No text was found for this product'; ?></p>
+			<div id="cart_form">
+				<form action="" method="post" id="addprod<?php echo '_' . $this->product->productId; ?>">
+<?php
+echo $this->formHidden($name = 'productId', $value = $this->product->productId, $attribs = null);
+echo $this->formLabel('addtocart', 'Add to Quote');
+echo $this->checkBox('addtocart');
+?>
+					<br />
+<?php echo $this->formLabel('count', 'Count'); ?>
+					<br />
+<?php
+
+echo $this->formSelect($name = 'count', $value = null, $attribs = null,
+	$options = array(
+		1 => '1',
+		2 => '2',
+		3 => '3',
+		4 => '4',
+		5 => '5',
+		10 => '10',
+		15 => '15',
+		20 => '20',
+		25 => '25',
+		50 => '50',
+		100 => '100')
+);
+
+?>
+			</div> <!--end of prod-desc -->
+			<br />
+<?php
+if (isset($this->token)) {
+	echo $this->token;
+}
+?>
+			<br />
+<?php echo $this->formSubmit($name='addtocart', $value='Add to Quote', $attribs=null); ?>
+				</form>
+		</div>
+	</div>
+</div>
+<?php elseif (null === $this->product) : ?>
+<h2>The requested product was not found</h2>
+<?php
+endif;
+?>
+<?php $this->headStyle()->captureStart(); ?>
+<?php $this->headStyle()->captureEnd(); ?>
+<?php
+// global $time_start;
+// $time_end = microtime(true);
+// $time = $time_end - $time_start;
+// echo $time;
+?>
+</div>

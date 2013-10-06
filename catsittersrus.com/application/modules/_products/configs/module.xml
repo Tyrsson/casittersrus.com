@@ -1,0 +1,41 @@
+<config>
+	<products>
+		<products-index>
+			<label>Products</label>
+			<uri>/products</uri>
+			<order>2</order>
+		</products-index>
+		<quote>
+			<label>Cart Details</label>
+			<uri>/cart/details</uri>
+			<order>700</order>
+			<visible>false</visible>
+		</quote>
+	</products>
+	<admin-products>
+	    <manage-products>
+	        <label>Manage Products</label>
+			<uri>/admin/products</uri>
+			<pages>
+			    <createproductcat>
+					<label>Create Product Category</label>
+					<uri>/admin/products/create/category</uri>
+					<order>301</order>
+					<visible>true</visible>
+				</createproductcat>
+				<createproduct>
+					<label>Create Product</label>
+					<uri>/admin/products/create</uri>
+					<order>301</order>
+					<visible>true</visible>
+				</createproduct>
+				<editproduct>
+					<label>Browse Products</label>
+					<uri>/admin/products/</uri>
+					<order>302</order>
+					<visible>true</visible>
+				</editproduct>
+			</pages>
+	    </manage-products>
+	</admin-products>
+</config>

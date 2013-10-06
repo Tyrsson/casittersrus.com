@@ -1,0 +1,41 @@
+<?php
+// This is where our markup will live, we will get this entire file, once per iteration
+?>
+<?php
+$auth = Zend_Auth::getInstance();
+// Identity exists; get it
+$identity = $auth->getIdentity();
+$acl = new User_Acl_Acl();
+$role = new User_Acl_Role_User();
+?>
+<!-- our widget container -->
+<div class="ui-widget ui-corner-all grid_4">
+	<div class="ui-widget-header ui-corner-top">
+		<h6><?php echo $this->model->firstName; ?>&nbsp;<?php echo $this->model->lastName; ?></h6>
+	</div>
+	<div class="ui-widget-content ui-corner-bottom">
+		<ul>
+			<li>
+				<div>
+					<?php
+					echo $this->gravatar()->setEmail($this->model->email)->setDefaultImg(Zend_View_Helper_Gravatar::DEFAULT_MM);
+					?>
+				</div>
+			</li>
+			<li><div>UserName: <?php echo $this->model->userName;?></div></li>
+			<?php
+			if ($acl->isAllowed($role, 'admin:area', 'admin:edit')) {
+        	?>
+        	<li>
+        		<div>
+        			<a class="delete-button" href="/admin/user/delete/<?php echo $this->model->userId; ?>"></a>
+        			<a class="edit-button" href="/admin/user/edit/<?php echo $this->model->userId; ?>"></a>
+        			<a href="/user/account/summary/?uid=<?php echo $this->model->userId; ?>"></a>
+        		</div>
+        	</li>
+        	<?php
+        	}
+        	?>
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,63 @@
+<div class="ui-testimonials ui-widget ui-corner-all prefix_4 grid_8">
+	<div class="ui-widget-header ui-corner-top">
+		<h2>Submit a Testimonial</h2>
+	</div>
+	<div class="ui-widget-content ui-corner-bottom">
+<?php
+if(isset($this->messages) || isset($this->message)) {
+
+	if(is_array($this->messages)) {
+
+		echo '<span>', implode($this->messages) ,'</span>';
+
+	} else {
+		echo $this->message;
+	}
+}
+
+if(isset($this->form)) {
+	if ($this->allowTestimonials == 'No') {
+		echo '<span id="logged-notice">Sorry, no submitting testimonials are allowed.</span>';
+	} else {
+		echo $this->form;
+	}
+} else {
+	echo '<span id="logged-notice">You must be logged in to submit testimonial.</span>';
+}
+?>
+	</div>
+</div>
+
+
+<?php $this->headStyle()->captureStart(); ?>
+#gb-heading {
+margin-bottom:20px;
+}
+#guestbook-submit-content {
+	width: 440px;
+	margin: 80px auto;
+	border: 3px solid #003861;
+	padding: 30px;
+}
+#guestbook-submit-form {
+height: auto;
+width:100%;
+}
+
+textarea#editor {
+margin: 0px;
+width: 99%;
+height: 140px;
+}
+
+h2 {padding-left: 10px;}
+
+input[type="text"] {width: 99%;}
+
+dt {padding: 10px 10px;}
+
+dd {padding: 10px 10px;}
+
+.recaptchatable {clear: both;}
+
+<?php $this->headStyle()->captureEnd(); ?>

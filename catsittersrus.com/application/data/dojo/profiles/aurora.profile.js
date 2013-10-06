@@ -1,0 +1,1 @@
+dependencies = {"action":"release","optimize":"shrinksafe","layerOptimize":"shrinksafe","copyTests":false,"loader":"default","cssOptimize":"comments","version":"aurora-1.7.5","releaseName":"aurora","layers":[{"name":null,"layerDependencies":[],"dependencies":["aurora.main"]}],"prefixes":[["aurora","../aurora"],["dijit","../dijit"],["dojo","../dojo"]]};

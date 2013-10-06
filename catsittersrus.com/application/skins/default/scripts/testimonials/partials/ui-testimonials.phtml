@@ -1,0 +1,19 @@
+<?php
+//Zend_Debug::dump($this->model->toArray());
+?>
+<?php
+if($this->model->isApproved) { ?>
+<div class="ui-widget item">
+	<div class="ui-widget-header ui-corner-top">
+		<h4>Posted by <?php echo $this->model->guestName; ?></h4>
+	</div>
+	<div class="ui-widget-content">
+		<ul>
+			<li>Posted on: <span><?php echo new Zend_Date($this->model->createdDate, Zend_Date::TIMESTAMP); ?></span></li>
+			<li><p><?php echo $this->model->content; ?></p></li>
+		</ul>
+	</div>
+</div>
+<?php
+}
+?>

@@ -1,0 +1,50 @@
+<?php
+//Zend_Debug::dump($this->parentCat);
+if ($this->pageCount):
+$this->jQuery()->addJavascript('jQuery(function(){
+                                             $( ".buttonset" ).buttonset();
+                                       });');
+?>
+<div class="paginationControl buttonset">
+<!-- Previous page link -->
+<?php if (isset($this->previous)): ?>
+
+<?php
+// echo $this->ajaxLink($link->name, $this->url(array(
+// 												'parentCat' => $this->cats->fetchParentNameByChildName($link->name),
+// 												'childCat' => $link->name,
+// 								  ), 'menu_index', false, false), array('update' => '#items', 'noscript' => true));
+?>
+
+<a id="page<?php echo $this->previous; ?>" href="<?php echo $this->url(array('page' => $this->previous)); ?>"><span>&laquo; Previous</span></a>
+<?php endif; ?>
+
+<!-- Numbered page links -->
+<?php foreach ($this->pagesInRange as $page): ?>
+  <?php if ($page != $this->current): ?>
+  <a id="page<?php echo $page; ?>" href="<?php echo $this->url(array('page' => $page)); ?>"><?php echo $page; ?></a>
+  <?php else: ?>
+
+<?php
+$this->jQuery()->addJavascript('
+jQuery(function(){
+			$("#page'.$this->current.'").addClass("ui-state-active");
+			$("#page'.$this->current.'").hover(function () {
+							$(this).addClass("ui-state-active");
+						  },
+						  function () {
+							$(this).addClass("ui-state-active");
+						  }
+			);
+});');
+?>
+    <a id="page<?php echo $this->current; ?>" href="<?php echo $this->url(array('page' => $this->current)); ?>"><?php echo $this->current; ?></a>
+  <?php endif; ?>
+<?php endforeach; ?>
+
+<!-- Next page link -->
+<?php if (isset($this->next)): ?>
+  <a id="page<?php echo $this->next; ?>" href="<?php echo $this->url(array('page' => $this->next)); ?>"><span>Next &raquo;</span></a>
+<?php endif; ?>
+</div>
+<?php endif; ?>

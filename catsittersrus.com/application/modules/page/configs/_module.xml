@@ -1,0 +1,10 @@
+<config>
+	<admin-pages>
+	    <pagesmain>
+	        <label>Pages</label>
+	        <uri>/admin/pages</uri>
+	        <resource>page</resource>
+	        <privilege>page.manage</privilege>
+	    </pagesmain>
+	</admin-pages>
+</config>
