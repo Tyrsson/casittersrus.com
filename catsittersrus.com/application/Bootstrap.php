@@ -199,7 +199,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
         $skin = new Admin_Model_SkinSettings();
         $row = $skin->fetchCurrent();
-
+        
+        //Zend_Debug::dump($row->skinName);
+        define('SKIN_NAME', $row->skinName);
         $view->skinName = $this->skinName = $row->skinName;
         Zend_Registry::set('skinName', $this->skinName);
         $isDefault = false;

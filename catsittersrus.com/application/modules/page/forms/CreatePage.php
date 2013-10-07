@@ -144,7 +144,7 @@ class Page_Form_CreatePage extends Zend_Dojo_Form
         $this->addElement($submit);
 
     }
-    public function setOptions($options)
+    public function setOptions(array $options)
     {
         if(isset($options['pageUrl'])) {
             call_user_func(array($this, 'set'.ucfirst($options['pageUrl'])), $options['pageUrl']);

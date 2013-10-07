@@ -27,10 +27,6 @@ dojoConfig = {
 	     {
 	    	 name: "aurora",
 	         location: "/lib/aurora"
-	     },
-	     {
-		     name: "ckeditor",
-		     location: "/lib/ckeditor"
 	     }
 	],
 	app: {
@@ -59,7 +55,7 @@ function(app){
 		echo $this->navigation(Zend_Registry::get('Admin_Navigation'))->menu();
 		?>
 		</div>
-		<div id="wSO" data-dojo-id="wSO" data-dojo-type="dijit/layout/ContentPane" region="center" splitter="false">
+		<div data-dojo-id="wSO" data-dojo-type="dijit/layout/ContentPane" region="center" splitter="false">
 		  <?php 
             echo $this->layout()->content;
           ?>

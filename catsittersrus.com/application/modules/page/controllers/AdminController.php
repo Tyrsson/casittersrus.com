@@ -254,7 +254,7 @@ class Page_AdminController extends System_Controller_AdminAction {
 	}
 	public function editAction() {
 	    // this must be called or your dojo dijit will not parse when ajaxed in
-	    Zend_Dojo_View_Helper_Dojo::setUseDeclarative(true);
+	    //Zend_Dojo_View_Helper_Dojo::setUseDeclarative(true);
 		$form = new Page_Form_EditPage();
 		$form->setAction('/admin/page/edit/'.$this->_request->pageUrl);
 		$model = new Page_Model_Page();
@@ -262,6 +262,7 @@ class Page_AdminController extends System_Controller_AdminAction {
 		$pageList = $model->getPagesForOrder();
 		$this->view->orderList = $pageList->toArray();
 		$this->view->pageName = $page->pageName;
+		
 
 		if($this->isAjax()) {
 		    // processAjax(array $data)
@@ -304,6 +305,8 @@ class Page_AdminController extends System_Controller_AdminAction {
 		    	    $popdata = array_merge($data, $page->toArray());
 		    	    
 		    	    $form->populate($popdata);
+		    	    $this->view->data = $popdata;
+		    	    //$this->view->Json = Zend_Json::encode($popdata);
 		    	}
 		}
 		else {// This is deprecated code, but should be left for the moment

@@ -1,9 +1,13 @@
 <?php
 if(isset($this->form))
 {
-    echo $this->form;
+    //echo $this->form;
 }
 // Please note that we pass the module name as the resource here but it must be first char Upper case
 //$this->module = 'media';
 //echo $this->setupEditor('pageText', $options = null, $withFinder = true, ucfirst($this->module));
 ?>
+<div data-dojo-type="dijit/form/Form">
+	<div data-dojo-type="dijit/form/TextBox"></div>
+	<button data-dojo-type="dijit/form/Button"></button>
+</div>

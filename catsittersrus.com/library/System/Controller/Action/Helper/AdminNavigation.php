@@ -54,7 +54,8 @@ class System_Controller_Action_Helper_AdminNavigation extends Zend_Controller_Ac
 	        $children = $pageTable->fetchDependents($dbPages[$i]['pageId'])->toArray();
 	        $mainTab['pages'][$i] = array(
 	                'label'      => $dbPages[$i]["pageName"],
-	                'uri'        => '/admin/page/edit/' . $dbPages[$i]['pageUrl']
+	                'uri'        => '/admin/page/edit/' . $dbPages[$i]['pageUrl'],
+	        		'title'      => $dbPages[$i]["pageName"]
 
 	        );
 	        if(count($children)) {
@@ -62,7 +63,8 @@ class System_Controller_Action_Helper_AdminNavigation extends Zend_Controller_Ac
 	            for ($n = 0; $n < $childCount; $n++) {
 	                $mainTab['pages'][$i]['pages'][] = array(
 	                        'label'      => $children[$n]['pageName'],
-	                        'uri'        => '/admin/page/edit/'.$children[$n]['pageUrl']
+	                        'uri'        => '/admin/page/edit/'.$children[$n]['pageUrl'],
+	                		'title'      => $children[$n]['pageName']
 	                );
 	                continue;
 	            }
@@ -99,6 +101,7 @@ class System_Controller_Action_Helper_AdminNavigation extends Zend_Controller_Ac
 			$parent['pages'][$i] = array(
 			        'label' => ucfirst($result[$i]->moduleName) . ' Settings',
 			        'uri' => '/admin/settings/' . $result[$i]->moduleName,
+					'title' => $result[$i]->moduleName,
 			        'order' => $i
 			);
 		}

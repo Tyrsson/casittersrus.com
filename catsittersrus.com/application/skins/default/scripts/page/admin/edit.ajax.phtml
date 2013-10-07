@@ -1,6 +1,11 @@
 <?php
-
 if(isset($this->form)) {
-   echo $this->form;
+  // echo $this->form;
 }
 ?>
+<div data-dojo-type="dijit/form/Form" action="/admin/page/edit/<?php echo $this->data['pageName']; ?>" method="post">
+	<label for="pageName">Page Name</label>
+	<div id="pageName" name="pageName" value="<?php echo $this->data['pageName']; ?>" data-dojo-type="dijit/form/TextBox"></div>
+	<textarea id="pageText" name="pageText" data-dojo-type="dijit/form/SimpleTextarea"><?php echo $this->data['pageText']; ?></textarea>
+	<button type="submit" data-dojo-type="dijit/form/Button" data-dojo-props="label: 'Save'"></button>
+</div>

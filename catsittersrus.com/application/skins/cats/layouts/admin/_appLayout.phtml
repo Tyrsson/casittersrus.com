@@ -1,0 +1,43 @@
+<?php 
+// dojo requires
+// $this->dojo()->requireModule('dijit.layout.LayoutContainer');
+// $this->dojo()->requireModule('dijit.layout.BorderContainer');
+// $this->dojo()->requireModule('dijit.layout.AccordionContainer');
+// $this->dojo()->requireModule('dijit.layout.ContentPane');
+// $this->dojo()->requireModule('dijit.layout.TabContainer');
+// $this->dojo()->requireModule('dijit.form.Form');
+// $this->dojo()->requireModule('dijit.form.Button');
+// $this->dojo()->requireModule('dijit.form.ComboButton');
+// $this->dojo()->requireModule('dijit.form.ComboBox');
+// $this->dojo()->requireModule('dijit.form.FilteringSelect');
+// $this->dojo()->requireModule('dijit.form.ValidationTextBox');
+// $this->dojo()->requireModule('dijit.form.SimpleTextarea');
+// $this->dojo()->requireModule('dijit.form.DateTextBox');
+// $this->dojo()->requireModule('dijit.form.DropDownButton');
+// $this->dojo()->requireModule('dijit.form.CheckBox');
+// $this->dojo()->requireModule('dijit.form.CurrencyTextBox');
+// $this->dojo()->requireModule('dijit.form.Select');
+// $this->dojo()->requireModule('dijit.form.MultiSelect');
+// $this->dojo()->requireModule('dijit.form.TextBox');
+// $this->dojo()->requireModule('dijit.form.Textarea');
+// $this->dojo()->requireModule('dijit.Editor');
+// $this->dojo()->requireModule('dojox.data.QueryReadStore');
+// $this->dojo()->requireModule('dojox.grid.DataGrid');
+// $this->dojo()->requireModule('dijit.Menu');
+// $this->dojo()->requireModule('dijit.MenuBar');
+// $this->dojo()->requireModule('dijit.PopupMenuBarItem');
+// $this->dojo()->requireModule('dijit.MenuBarItem');
+// $this->dojo()->requireModule('dijit.TooltipDialog');
+// $this->dojo()->requireModule('dojo.data.ItemFileWriteStore');
+// $this->dojo()->requireModule('dojox.data.JsonRestStore');
+// // $this->dojo()->requireModule('');
+// $this->dojo()->requireModule('dojo.parser');
+
+
+?>
+<?php  $this->borderContainer()->captureStart('appLayout', array('design' => 'headline'), array('style'=> 'height: 99%;')); ?>
+<?php echo $this->render('_headline.phtml'); ?>
+<?php echo $this->render('_leftNav.phtml'); ?>
+<?php echo $this->render('_appWorkSpacePane.phtml'); ?>
+<?php echo $this->render('_footer.phtml'); ?>
+<?php echo $this->borderContainer()->captureEnd('appLayout'); ?>

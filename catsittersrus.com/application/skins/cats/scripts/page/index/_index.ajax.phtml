@@ -1,0 +1,112 @@
+<?php
+if(isset($this->page) && $this->page !== null) {
+
+?>
+
+
+
+	<?php
+	if($this->page->showSlider && !IS_MOBILE) {
+	?>
+<!-- 	<div class="grid_16"> -->
+		<?php
+		//echo $this->action('slider', 'widget', 'media');
+		?>
+<!-- 	</div> -->
+
+		<div class="main-image grid-100 hide-on-tablet hide-on-mobile">
+			<img width="840" height="501" src="./images/frontpage_image.png" />
+
+
+			<?php
+	//if($this->appSettings->enableSiteSlogan && !empty($this->appSettings->siteSloganText)) {
+	?>
+
+			<?php //echo  $this->appSettings->siteSloganText; ?>
+
+			<div class="slogan">
+					<h2 class="slogan-top damion">Awesome Food</h2>
+						<img width="289" height="8" src="./images/front_image_line.png" />
+					<h2 class="slogan-bottom oswald">Good Times</h2>
+				</div>
+	<?php
+	//}
+	?>
+
+		</div> <!-- End main-image div -->
+
+	<?php
+	}
+	?>
+
+<div class="grid-80 tablet-grid-100 mobile-grid-100 right-column">
+	<?php
+	// home page setting
+	if($this->appSettings->showHomeTextContent)
+	{
+	?>
+
+	<div class="main-image grid-100 hide-on-tablet hide-on-mobile">
+			<img width="840" height="501" src="./images/frontpage_image.png" />
+				<div class="slogan">
+					<h2 class="slogan-top damion">Awesome Food</h2>
+						<img width="289" height="8" src="./images/front_image_line.png" />
+					<h2 class="slogan-bottom oswald">Good Times</h2>
+				</div>
+		</div>
+
+	<div class="ui-pages">
+<!-- 		<div class="ui-widget-header"> -->
+			<div class="ui-pages-heading">
+				<h2><?php echo ($this->appSettings->showPageHeading) ? ucwords( $this->page['pageName'] ) : ''; ?></h2>
+			</div>
+			<?php
+			//Zend_Debug::dump($this->user);
+			if($this->acl->isAllowed($this->user->role, "$this->module", "$this->module.manage")) {
+			?>
+			<div class="ui-pages-toolbar">
+				<span><a class="create-button" href="/admin/pages/create"></a></span>
+				<span><a class="edit-button" href="/admin/pages/edit/<?php echo $this->page['pageUrl']; ?>"></a></span>
+				<?php
+				if(!$this->isHome) {
+				?>
+				<span><a class="delete-button" href="/admin/pages/delete/<?php echo $this->page['pageUrl']; ?>"></a></span>
+				<?php
+				}
+				?>
+			</div>
+
+			<?php
+			}
+			?>
+<!-- 		</div> -->
+<!-- 		<div class="ui-widget-content"> -->
+			<div class="grid-100 content">
+				<?php echo $this->page['pageText']; ?>
+			</div>
+<!-- 		</div> -->
+	</div>
+	<?php
+	}
+	?>
+		<?php
+		if(isset($this->widgets)) {
+		    foreach($this->widgets as $widgetData) {
+				echo $this->action($widgetData->action, $widgetData->controller, $widgetData->module);
+			}
+		}
+		if($this->appSettings->showRecentImagesOnHome) {
+	        //echo $this->action('recent', 'widget', 'media', array('mediaType' => 'images'));
+	    }
+		?>
+		<?php
+		if($this->showFb) {
+		//echo $this->faceBookHelper($this->fb, $fbTitle = $this->page['pageName'], $fbType = null, $fbUrl = null, $fbImage = null, $fbsiteName = null, $type = 'page');
+		}
+		?>
+</div>
+<?php
+} else {
+// page would be null
+}
+?>

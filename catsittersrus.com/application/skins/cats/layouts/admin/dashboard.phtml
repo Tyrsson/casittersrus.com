@@ -1,0 +1,49 @@
+<?php
+$content = $this->render('_appLayout.phtml');
+// if (Zend_Controller_Front::getInstance()->getRequest()->getParam('nojs', false)) {
+//     $this->dojo()->disable();
+//     $content = preg_replace('#href="([^"]*)"#s', 'href="$1?nojs=true"', $content);
+// }
+?>
+<?php
+echo $this->doctype('HTML5');
+?>
+<html lang="en">
+<head>
+    <?php
+    $this->headMeta()->setName('viewport', 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1');
+	$this->headMeta()->setCharset('UTF-8');
+
+	// print the meta information in case its needs to be set before the below calls to styles and script
+	echo $this->headMeta();
+	?>
+    <base href="<?php echo $this->serverUrl($this->baseUrl('/')); ?>" />
+    <?php
+   // $this->headLink()->offsetSetStylesheet(1, $this->baseUrl('/') . 'skins/default/reset.css', 'screen');
+    //$this->headLink()->offsetSetStylesheet(2, $this->baseUrl('/') . 'lib/dojo/resources/dojo.css', 'screen');
+    //$this->headScript()->offsetSetFile(400, $this->baseUrl('/') . 'js-src/ckeditor/ckeditor.js', 'text/javascript');
+    //$this->headScript()->offsetSetFile(401, $this->baseUrl('/') . 'js-src/ckfinder/ckfinder.js', 'text/javascript');
+    $this->headLink()->offsetSetStylesheet(2, $this->baseUrl('/') . 'skins/default/admin/style.css', 'screen');
+    echo $this->headLink();
+    ?>
+    <?php 
+    // add the requires for dojo so they can be built into the layer file
+    $this->dojo()->requireModule('dojox.editor.plugins.TextColor');
+    $this->dojo()->addStyleSheetModule('dojox.editor.plugins.TextColor');
+    // print dojo
+    echo $this->dojo();
+    echo $this->headScript();
+?>
+
+<style type="text/css">
+@import "/lib/dojox/grid/resources/claroGrid.css";
+</style>
+</head>
+<body class="claro">
+<?php
+// the dojo script is built in /index.phtml
+echo $content;
+?>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<?php
+if(isset($this->page) && $this->page !== null) {
+
+?>
+
+<div class="oswald grid-100 tablet-grid-100 mobile-grid-100">
+		<h2><?php echo ($this->appSettings->showPageHeading) ? ucwords( $this->page['pageName'] ) : ''; ?></h2>
+		<img src="images/horizontal_line.png" height="3" width="162">
+	</div>
+
+<div class="ui-widget-content">
+<div class="ui-pages">
+<!-- 	<div class="ui-widget-header"> -->
+		<div class="ui-pages-heading">
+			<div class="oswald grid-100 tablet-grid-100 mobile-grid-100">
+				<h2><?php echo ($this->appSettings->showPageHeading) ? ucwords( $this->page['pageName'] ) : ''; ?></h2>
+				<img src="images/horizontal_line.png" height="3" width="162" />
+			</div>
+		</div>
+		<?php
+		//Zend_Debug::dump($this->user);
+		if($this->acl->isAllowed($this->user->role, $this->module, "$this->module.manage")) {
+		?>
+		<div class="ui-pages-toolbar">
+			<span><a class="create-button" href="/admin/pages/create"></a></span>
+			<span><a class="edit-button" href="/admin/pages/edit/<?php echo $this->page['pageUrl']; ?>"></a></span>
+			<?php
+			if($this->allowDelete) {
+			?>
+			<span><a class="delete-button" href="/admin/pages/delete/<?php echo $this->page['pageUrl']; ?>"></a></span>
+			<?php
+			}
+			?>
+		</div>
+
+		<?php
+		}
+		?>
+<!-- 	</div> -->
+	<div class="ui-helper-clearfix">
+		<?php
+// 		if(Zend_Registry::isRegistered('Child_Navigation')) {
+// 			echo $this->navigation()->menu()->renderMenu(Zend_Registry::get('Child_Navigation'), array('ulClass' => 'childpages'));
+// 		}
+		?>
+
+		<?php
+		if($this->hasChildren) {
+
+		?>
+				<ul class="subpage-nav">
+					<?php
+						// this will return an li for each
+						$this->partialLoop()->setObjectKey('model');
+						//echo $this->partialLoop('/partials/childpage-navigation.phtml', $this->subPages);
+					?>
+				</ul>
+			<div class="clear"></div>
+		<?php
+		}
+		?>
+
+
+		<?php
+		if($this->page['logo'] !== null)
+		{
+		?>
+			<img class="page-logo" src="/modules/pages/logos/<?php echo $this->page['logo']; ?>" />
+		<?php
+		}
+		?>
+		<?php
+		/*
+		 * The below div class is used to allow
+		 * the editor to change the styles in the page without effecting other parts of the markup
+		 * Please leave this class in place
+		 * !!!!!! DO NOT REMOVE !!!!!!!!!
+		 */
+		?>
+		<div class="ui-pages-editable">
+			<div class="menu-items prefix-5 grid-90 tablet-grid-100 mobile-grid-100">
+				<?php echo $this->page['pageText']; ?>
+			</div>
+		</div>
+		<?php
+		/*
+		 * This is the new widget implementation, please use it, see Page_Model_Widgets
+		 */
+		if(isset($this->widgets)) {
+			foreach($this->widgets as $widgetData) {
+				echo $this->action($widgetData->action, $widgetData->controller, $widgetData->module, array('isWidget' => 1));
+			}
+		}
+		?>
+	</div>
+</div>
+<!-- <div style="width:15%; float:left;"> -->
+		<?php
+		if(Zend_Registry::isRegistered('Child_Navigation')) {
+			echo $this->navigation()->menu()->renderMenu(Zend_Registry::get('Child_Navigation'), array('ulClass' => 'childpages'));
+		}
+		?>
+<!-- </div> -->
+	<?php
+	if($this->showFb) {
+	//echo $this->faceBookHelper($this->fb, $fbTitle = $this->page['pageName'], $fbType = null, $fbUrl = null, $fbImage = null, $fbsiteName = null, $type = 'page');
+	}
+	?>
+</div>
+<?php
+} else {
+// page would be null
+}
+?>

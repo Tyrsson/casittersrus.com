@@ -27,10 +27,6 @@ class Admin_IndexController extends System_Controller_AdminAction {
 		$this->_helper->viewRenderer->setViewBasePathSpec(APPLICATION_PATH . '/skins/default')
 		->setViewScriptPathSpec(':module/:controller/:action.:suffix')
 		->setViewScriptPathNoControllerSpec(':action.:suffix');
-		//Zend_Controller_Action_HelperBroker::addHelper($viewRenderer);
-		$this->_helper->layout()->setLayoutPath($this->_helper->viewRenderer->getViewBasePathSpec() . '/layouts/admin');
-		
-		$this->_helper->layout()->setLayout('dashboard');
 
 		if($this->isAjax()) {
 		    $this->_helper->layout()->disableLayout();
