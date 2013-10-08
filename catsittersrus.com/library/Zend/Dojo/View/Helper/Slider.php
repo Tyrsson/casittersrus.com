@@ -38,7 +38,7 @@ abstract class Zend_Dojo_View_Helper_Slider extends Zend_Dojo_View_Helper_Dijit
      * Dojo module to use
      * @var string
      */
-    protected $_module = 'dijit.form.Slider';
+    protected $_module = 'dijit/form/Slider';
 
     /**
      * Required slider parameters
@@ -159,11 +159,11 @@ abstract class Zend_Dojo_View_Helper_Slider extends Zend_Dojo_View_Helper_Dijit
         $id .= '-' . $position;
 
         if (!array_key_exists('dijit', $decInfo)) {
-            $dijit = 'dijit.form.' . ucfirst($this->_sliderType) . 'Rule';
+            $dijit = 'dijit/form/' . ucfirst($this->_sliderType) . 'Rule';
         } else {
             $dijit = $decInfo['dijit'];
-            if ('dijit.form.' != substr($dijit, 0, 10)) {
-                $dijit = 'dijit.form.' . $dijit;
+            if ('dijit/form/' != substr($dijit, 0, 10)) {
+                $dijit = 'dijit/form/' . $dijit;
             }
         }
 
@@ -243,7 +243,7 @@ abstract class Zend_Dojo_View_Helper_Slider extends Zend_Dojo_View_Helper_Dijit
     protected function _prepareLabelsList($id, array $params, array $attribs, array $labels)
     {
         $attribs['id'] = $id . '-labels';
-        $dijit = 'dijit.form.' . ucfirst($this->_sliderType) . 'RuleLabels';
+        $dijit = 'dijit/form/' . ucfirst($this->_sliderType) . 'RuleLabels';
         $attribs = $this->_prepareDijit($attribs, $params, 'layout', $dijit);
 
         return $this->view->htmlList($labels, true, $attribs);

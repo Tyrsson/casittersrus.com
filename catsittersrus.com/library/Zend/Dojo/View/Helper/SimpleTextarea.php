@@ -38,7 +38,7 @@ class Zend_Dojo_View_Helper_SimpleTextarea extends Zend_Dojo_View_Helper_Dijit
     /**
      * @var string Dijit type
      */
-    protected $_dijit  = 'dijit.form.SimpleTextarea';
+    protected $_dijit  = 'dijit/form/SimpleTextarea';
 
     /**
      * @var string HTML element type
@@ -48,7 +48,7 @@ class Zend_Dojo_View_Helper_SimpleTextarea extends Zend_Dojo_View_Helper_Dijit
     /**
      * @var string Dojo module
      */
-    protected $_module = 'dijit.form.SimpleTextarea';
+    protected $_module = 'dijit/form/SimpleTextarea';
 
     /**
      * dijit.form.SimpleTextarea

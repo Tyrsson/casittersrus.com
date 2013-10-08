@@ -38,7 +38,7 @@ class Zend_Dojo_View_Helper_NumberSpinner extends Zend_Dojo_View_Helper_Dijit
      * Dijit being used
      * @var string
      */
-    protected $_dijit  = 'dijit.form.NumberSpinner';
+    protected $_dijit  = 'dijit/form/NumberSpinner';
 
     /**
      * HTML element type
@@ -50,7 +50,7 @@ class Zend_Dojo_View_Helper_NumberSpinner extends Zend_Dojo_View_Helper_Dijit
      * Dojo module to use
      * @var string
      */
-    protected $_module = 'dijit.form.NumberSpinner';
+    protected $_module = 'dijit/form/NumberSpinner';
 
     /**
      * dijit.form.NumberSpinner

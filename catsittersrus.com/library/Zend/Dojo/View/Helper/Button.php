@@ -38,13 +38,13 @@ class Zend_Dojo_View_Helper_Button extends Zend_Dojo_View_Helper_Dijit
      * Dijit being used
      * @var string
      */
-    protected $_dijit  = 'dijit.form.Button';
+    protected $_dijit  = 'dijit/form/Button';
 
     /**
      * Dojo module to use
      * @var string
      */
-    protected $_module = 'dijit.form.Button';
+    protected $_module = 'dijit/form/Button';
 
     /**
      * dijit.form.Button

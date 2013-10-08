@@ -1,0 +1,55 @@
+<div data-dojo-id="page" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top', splitter: 'true'">
+	<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design: 'headline', gutters: 'true'" style="z-index: 0; width: 100%; height: 100%;">
+		<div data-dojo-id="title" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top', splitter: 'true'">
+			Admin tools
+			<?php
+			if(isset($this->page) && $this->page !== null) {
+				if($this->acl->isAllowed($this->user->role, $this->module, "$this->module.manage")) {
+			?>
+					<a href="/admin/pages/create">New</a>
+					<a href="/admin/pages/edit/<?php echo $this->page['pageUrl']; ?>">Edit</a>
+					<?php
+					if(!$this->isHome) {
+					?>
+						<a href="/admin/pages/delete/<?php echo $this->page['pageUrl']; ?>">Delete</a>
+					<?php
+					}
+			}
+			?>
+		</div>
+		<?php 
+		$this->appSettings->showPageHeading = true;
+		if($this->appSettings->showPageHeading) {
+		?>
+			<div data-dojo-id="pageTitle" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top', splitter: 'true'">
+				<h2>
+					<?php 
+						echo ucwords($this->page['pageName']); 
+					?>
+				</h2>
+			</div>
+		<?php 
+		}
+		?>
+		<div data-dojo-id="pageContent" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'center', splitter: 'false'">
+		<?php
+			if($this->appSettings->showHomeTextContent)
+			{
+				echo $this->page['pageText'];
+			}
+			if(isset($this->widgets)) {
+		    	foreach($this->widgets as $widgetData) {
+					echo $this->action($widgetData->action, $widgetData->controller, $widgetData->module);
+				}
+			}
+			if($this->appSettings->showRecentImagesOnHome) {
+	        //echo $this->action('recent', 'widget', 'media', array('mediaType' => 'images'));
+	    	}
+			if($this->showFb) {
+			//echo $this->faceBookHelper($this->fb, $fbTitle = $this->page['pageName'], $fbType = null, $fbUrl = null, $fbImage = null, $fbsiteName = null, $type = 'page');
+			}
+		} 
+		?>
+		</div>
+	</div>
+</div>

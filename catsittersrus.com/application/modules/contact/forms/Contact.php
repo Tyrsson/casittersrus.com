@@ -1,11 +1,10 @@
 <?php
-class Contact_Form_Contact extends Zend_Form {
+class Contact_Form_Contact extends Zend_Dojo_Form {
 
 	public function init() {
-
+		
 		$this->setAction('/contact');
 		/* Form Elements & Other Definitions Here ... */
-
 		switch(APPLICATION_ENV) {
 			case 'production' :
 				$dir = 'public_html';
@@ -21,7 +20,7 @@ class Contact_Form_Contact extends Zend_Form {
 		//$this->setAction('/contact/index')
 			//->setMethod('post');
 
-		$name = new Zend_Form_Element_Text('name');
+		$name = new Zend_Dojo_Form_Element_TextBox('name');
 		$name->setLabel('Name')
 			 //->setOptions(array('size' => '30'))
 		     ->setRequired(true)
@@ -29,7 +28,7 @@ class Contact_Form_Contact extends Zend_Form {
 		     ->addFilter('HtmlEntities')
 		     ->addFilter('StringTrim');
 		// create text input for email address
-		$email = new Zend_Form_Element_Text('email');
+		$email = new Zend_Dojo_Form_Element_TextBox('email');
 		$email->setLabel('Email Address')
 			  //->setOptions(array('size' => '30'))
 			  ->setRequired(true)
@@ -39,7 +38,7 @@ class Contact_Form_Contact extends Zend_Form {
 			  ->addFilter ( 'StringTrim' );
 		// create text input for phone number
 
-		$number = new Zend_Form_Element_Text ( 'number' );
+		$number = new Zend_Dojo_Form_Element_TextBox( 'number' );
 		$number->setLabel('Phone Number (Optional)' )
 		//->setOptions(array('size' => '30'))
 		//->setRequired(true)
@@ -50,7 +49,7 @@ class Contact_Form_Contact extends Zend_Form {
 
 		// create text input for message body
 
-		$editor = new Zend_Form_Element_Textarea ( 'Editor' );
+		$editor = new  Zend_Dojo_Form_Element_Editor ( 'Editor' );
 		$editor->setLabel('Message');
 		$editor->setRequired(true)
 		->setAttrib('COLS', '30')
@@ -90,7 +89,7 @@ class Contact_Form_Contact extends Zend_Form {
 
 		$captcha->setLabel('Verification code:');
 
-		$submit = new Zend_Form_Element_Submit('submit');
+		$submit = new Zend_Dojo_Form_Element_SubmitButton('send');
 		//$submit->setLabel('Submit')->setOptions(array('class' => 'submit'));
 
 		$this->addElement($name)

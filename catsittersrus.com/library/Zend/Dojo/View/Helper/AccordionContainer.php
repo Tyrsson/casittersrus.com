@@ -1,23 +1,15 @@
 <?php
 /**
- * Zend Framework
+ * Aurora CMS
  *
  * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
  *
  * @category   Zend
  * @package    Zend_Dojo
  * @subpackage View
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: AccordionContainer.php 24593 2012-01-05 20:35:02Z matthew $
+ * @copyright  Copyright (c) 2011-2013 Webinertia
+ * @license    http://webinertia.net/license.txt
+ * @version    1.0
  */
 
 /** Zend_Dojo_View_Helper_DijitContainer */
@@ -29,8 +21,8 @@ require_once 'Zend/Dojo/View/Helper/DijitContainer.php';
  * @uses       Zend_Dojo_View_Helper_DijitContainer
  * @package    Zend_Dojo
  * @subpackage View
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright  Copyright (c) 2011-2013 Webinertia
+ * @license    http://webinertia.net/license.txt
   */
 class Zend_Dojo_View_Helper_AccordionContainer extends Zend_Dojo_View_Helper_DijitContainer
 {
@@ -38,13 +30,13 @@ class Zend_Dojo_View_Helper_AccordionContainer extends Zend_Dojo_View_Helper_Dij
      * Dijit being used
      * @var string
      */
-    protected $_dijit  = 'dijit.layout.AccordionContainer';
+    protected $_dijit  = 'dijit/layout/AccordionContainer';
 
     /**
      * Dojo module to use
      * @var string
      */
-    protected $_module = 'dijit.layout.AccordionContainer';
+    protected $_module = 'dijit/layout/AccordionContainer';
 
     /**
      * dijit.layout.AccordionContainer

@@ -38,7 +38,7 @@ class Zend_Dojo_View_Helper_Textarea extends Zend_Dojo_View_Helper_Dijit
      * Dijit being used
      * @var string
      */
-    protected $_dijit  = 'dijit.form.Textarea';
+    protected $_dijit  = 'dijit/form/Textarea';
 
     /**
      * HTML element type
@@ -50,7 +50,7 @@ class Zend_Dojo_View_Helper_Textarea extends Zend_Dojo_View_Helper_Dijit
      * Dojo module to use
      * @var string
      */
-    protected $_module = 'dijit.form.Textarea';
+    protected $_module = 'dijit/form/Textarea';
 
     /**
      * dijit.form.Textarea

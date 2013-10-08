@@ -38,7 +38,7 @@ class Zend_Dojo_View_Helper_DateTextBox extends Zend_Dojo_View_Helper_Dijit
      * Dijit being used
      * @var string
      */
-    protected $_dijit  = 'dijit.form.DateTextBox';
+    protected $_dijit  = 'dijit/form/DateTextBox';
 
     /**
      * HTML element type
@@ -50,7 +50,7 @@ class Zend_Dojo_View_Helper_DateTextBox extends Zend_Dojo_View_Helper_Dijit
      * Dojo module to use
      * @var string
      */
-    protected $_module = 'dijit.form.DateTextBox';
+    protected $_module = 'dijit/form/DateTextBox';
 
     /**
      * dijit.form.DateTextBox

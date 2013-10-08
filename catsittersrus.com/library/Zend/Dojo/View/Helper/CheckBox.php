@@ -38,7 +38,7 @@ class Zend_Dojo_View_Helper_CheckBox extends Zend_Dojo_View_Helper_Dijit
      * Dijit being used
      * @var string
      */
-    protected $_dijit  = 'dijit.form.CheckBox';
+    protected $_dijit  = 'dijit/form/CheckBox';
 
     /**
      * Element type
@@ -50,7 +50,7 @@ class Zend_Dojo_View_Helper_CheckBox extends Zend_Dojo_View_Helper_Dijit
      * Dojo module to use
      * @var string
      */
-    protected $_module = 'dijit.form.CheckBox';
+    protected $_module = 'dijit/form/CheckBox';
 
     /**
      * dijit.form.CheckBox

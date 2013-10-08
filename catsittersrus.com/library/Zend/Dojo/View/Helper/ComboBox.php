@@ -38,7 +38,7 @@ class Zend_Dojo_View_Helper_ComboBox extends Zend_Dojo_View_Helper_Dijit
      * Dijit being used
      * @var string
      */
-    protected $_dijit  = 'dijit.form.ComboBox';
+    protected $_dijit  = 'dijit/form/ComboBox';
 
     /**
      * HTML element type
@@ -50,10 +50,10 @@ class Zend_Dojo_View_Helper_ComboBox extends Zend_Dojo_View_Helper_Dijit
      * Dojo module to use
      * @var string
      */
-    protected $_module = 'dijit.form.ComboBox';
+    protected $_module = 'dijit/form/ComboBox';
 
     /**
-     * dijit.form.ComboBox
+     * dijit/form/ComboBox
      *
      * @param  int $id
      * @param  mixed $value
@@ -127,7 +127,7 @@ class Zend_Dojo_View_Helper_ComboBox extends Zend_Dojo_View_Helper_Dijit
 
         $extraParams = array();
         $storeParams = array(
-            'dojoType' => $params['type'],
+            'data-dojo-type' => $params['type'],
             'jsId'     => $params['store'],
         );
 
@@ -141,7 +141,7 @@ class Zend_Dojo_View_Helper_ComboBox extends Zend_Dojo_View_Helper_Dijit
                 require_once 'Zend/Json.php';
                 $this->dojo->addJavascript('var ' . $storeParams['jsId'] . ";\n");
                 $js = $storeParams['jsId'] . ' = '
-                    . 'new ' . $storeParams['dojoType'] . '('
+                    . 'new ' . $storeParams['data-dojo-type'] . '('
                     .     Zend_Json::encode($extraParams)
                     . ");\n";
                 $js = "function() {\n$js\n}";

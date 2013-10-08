@@ -58,15 +58,15 @@ class Zend_Dojo_View_Helper_CustomDijit extends Zend_Dojo_View_Helper_DijitConta
             return $this;
         }
 
-        if (!array_key_exists('dojoType', $params)
+        if (!array_key_exists('dojo-data-type', $params)
             && (null === $this->_defaultDojoType)
         ) {
             require_once 'Zend/Dojo/View/Exception.php';
-            throw new Zend_Dojo_View_Exception('No dojoType specified; cannot create dijit');
-        } elseif (array_key_exists('dojoType', $params)) {
-            $this->_dijit  = $params['dojoType'];
-            $this->_module = $params['dojoType'];
-            unset($params['dojoType']);
+            throw new Zend_Dojo_View_Exception('No dojo-data-type specified; cannot create dijit');
+        } elseif (array_key_exists('dojo-data-type', $params)) {
+            $this->_dijit  = $params['dojo-data-type'];
+            $this->_module = $params['dojo-data-type'];
+            //unset($params['dojoType']);
         } else {
             $this->_dijit  = $this->_defaultDojoType;
             $this->_module = $this->_defaultDojoType;
@@ -93,15 +93,15 @@ class Zend_Dojo_View_Helper_CustomDijit extends Zend_Dojo_View_Helper_DijitConta
      */
     public function captureStart($id, array $params = array(), array $attribs = array())
     {
-        if (!array_key_exists('dojoType', $params)
+        if (!array_key_exists('dojo-data-type', $params)
             && (null === $this->_defaultDojoType)
         ) {
             require_once 'Zend/Dojo/View/Exception.php';
             throw new Zend_Dojo_View_Exception('No dojoType specified; cannot create dijit');
-        } elseif (array_key_exists('dojoType', $params)) {
-            $this->_dijit  = $params['dojoType'];
-            $this->_module = $params['dojoType'];
-            unset($params['dojoType']);
+        } elseif (array_key_exists('dojo-data-type', $params)) {
+            $this->_dijit  = $params['dojo-data-type'];
+            $this->_module = $params['dojo-data-type'];
+            //unset($params['dojoType']);
         } else {
             $this->_dijit  = $this->_defaultDojoType;
             $this->_module = $this->_defaultDojoType;

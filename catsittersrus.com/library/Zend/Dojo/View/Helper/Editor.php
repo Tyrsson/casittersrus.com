@@ -40,12 +40,12 @@ class Zend_Dojo_View_Helper_Editor extends Zend_Dojo_View_Helper_Dijit
     /**
      * @param string Dijit type
      */
-    protected $_dijit = 'dijit.Editor';
+    protected $_dijit = 'dijit/Editor';
 
     /**
      * @var string Dijit module to load
      */
-    protected $_module = 'dijit.Editor';
+    protected $_module = 'dijit/Editor';
 
     /**
      * @var array Maps non-core plugin to module basename
@@ -148,7 +148,7 @@ class Zend_Dojo_View_Helper_Editor extends Zend_Dojo_View_Helper_Dijit
         foreach ($plugins as $commandName) {
             if (isset($this->_pluginsModules[$commandName])) {
                 $pluginName = $this->_pluginsModules[$commandName];
-                $modules[] = 'dijit._editor.plugins.' . $pluginName;
+                $modules[] = 'dijit/_editor/plugins.' . $pluginName;
             }
         }
 
@@ -181,7 +181,7 @@ class Zend_Dojo_View_Helper_Editor extends Zend_Dojo_View_Helper_Dijit
      */
     protected function _createEditorOnSubmit($hiddenId, $editorId)
     {
-        //die($hiddenId);
+        //TODO: recode the dojo.connect call
         $this->dojo->onLoadCaptureStart();
         echo <<<EOJ
 function() {

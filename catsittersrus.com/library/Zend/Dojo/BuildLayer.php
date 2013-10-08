@@ -192,7 +192,7 @@ class Zend_Dojo_BuildLayer
     {
         if (!preg_match('/^[a-z][a-z0-9_]*(\.[a-z][a-z0-9_]*)+$/i', $name)) {
             require_once 'Zend/Dojo/Exception.php';
-            throw new Zend_Dojo_Exception('Invalid layer name provided; must be of form[a-z][a-z0-9_](\.[a-z][a-z0-9_])+');
+            throw new Zend_Dojo_Exception('Invalid layer name provided; must be of form[a-z][a-z0-9_](\.[a-z][a-z0-9_\/])+');
         }
         $this->_layerName = $name;
         return $this;
@@ -460,12 +460,12 @@ class Zend_Dojo_BuildLayer
             $content .= sprintf("dojo.registerModulePath(\"%s\", \"%s\");\n", $module, $path);
         }
         foreach ($modules as $module) {
-            $content .= sprintf("dojo.require(\"%s\");\n", $module);
+            $content .= sprintf("require(\"%s\");\n", $module);
         }
 
         if ($this->consumeOnLoad()) {
             foreach ($helper->getOnLoadActions() as $callback) {
-                $content .= sprintf("dojo.addOnLoad(%s);\n", $callback);
+                $content .= sprintf("ready(%s);\n", $callback);
             }
         }
         if ($this->consumeJavascript()) {
