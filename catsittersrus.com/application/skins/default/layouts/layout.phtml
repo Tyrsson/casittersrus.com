@@ -10,6 +10,8 @@
                 ->prependStylesheet('/lib/dijit/themes/claro/claro.css', 'screen')
                 ->headLink()
                 ->appendStylesheet('/skins/default/style.css', 'screen');
+	
+	echo $this->headStyle();
 ?>
 <script>
 dojoConfig = {
@@ -31,15 +33,20 @@ dojoConfig = {
 
 	},
 	// Get "fresh" resources
-	cacheBust: true
+// 	cacheBust: true
 };
 </script>
 <script src="//ajax.googleapis.com/ajax/libs/dojo/1.9.1/dojo/dojo.js"></script>
-<script type="text/javascript">
+<script>
 require([
 	"aurora/app",
 ]);
 </script>
+
+<?php 
+echo $this->headScript();
+?>
+
 </head>
 <body class="claro">
 	<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design: 'headline', gutters: 'true'" style="z-index: 0; width: 100%; height: 100%;">

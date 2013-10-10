@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="/lib/dijit/themes/claro/claro.css" />
+<link href="/skins/default/style.css" />
+<script>
+dojoConfig = {
+	async: true,
+	parseOnLoad: true,
+	dojoBlankHtmlUrl: "/lib/dojo/resources/blank.html",
+	ioPublish: true,
+	has: {
+       "dojo-firebug": true,
+       "dojo-debug-messages": true
+	},
+	packages: [
+	     {
+	    	 name: "aurora",
+	         location: "/lib/aurora"
+	     }
+	],
+	app: {
+
+	},
+	// Get "fresh" resources
+	//cacheBust: true
+};
+</script>
+<script src="//ajax.googleapis.com/ajax/libs/dojo/1.9.1/dojo/dojo.js"></script>
+<script type="text/javascript">
+require([
+    "aurora/app"
+]);
+</script>
+
+</head>
+<body class="claro">
+
+</body>
+</html>

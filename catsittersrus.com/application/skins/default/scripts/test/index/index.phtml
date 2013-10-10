@@ -1,0 +1,58 @@
+<?php 
+$this->headStyle()->captureStart();
+?>
+#orderForm {
+display: table;
+}
+.row {
+display: table-row;
+}
+.cell {
+display:table-cell;
+}
+.count {
+width: 30px;
+}
+<?php 
+$this->headStyle()->captureEnd();
+?>
+<?php 
+$this->headScript()->captureStart();
+?>
+require([
+		"dojo/ready",
+		"aurora/calc"
+		], 
+		function(ready, calc){ 
+		ready(function() {
+			calc.init();
+		});
+});
+<?php 
+$this->headScript()->captureEnd();
+?>
+<div id="orderForm" data-dojo-type="dijit/form/Form">
+	<div class="row">
+		<div class="cell">Item Name</div>
+		<div class="cell cost">$10.00</div>
+		<div class="cell count">
+			<div data-dojo-type="dijit/form/NumberSpinner" data-dojo-props="intermediateChanges: true, constraints:{min:0, max:40}, value:0" style="width:50px; margin-left: 10px;">
+				<script type="dojo/on" data-dojo-event="change">
+					var self = this;
+					calc.addToTotal(self.getValue());
+				</script>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="cell">Item Name</div>
+		<div class="cell cost">$12.00</div>
+		<div class="cell count">
+			<input data-dojo-type="dijit/form/NumberSpinner" data-dojo-props="intermediateChanges: true, constraints:{min:0, max:40}, value:0" style="width:50px; margin-left: 10px;" />
+		</div>
+	</div>
+	<div class="row">
+		<div class="cell">Grand Total = </div>
+		<div id="total" class="cell">0.00</div>
+	</div>
+</div>

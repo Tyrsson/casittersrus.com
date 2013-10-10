@@ -16,11 +16,13 @@ define([
     "dojo/parser",
     "dijit/layout/ContentPane",
     "dijit/Tooltip",
+    "dijit/form/NumberSpinner",
+    "dijit/form/Form",
     "aurora/module"
 ], function(query, dom, domStyle, domClass, domConstruct, domGeometry, string, on, aspect, keys, config, lang, baseFx, registry, parser, ContentPane, Tooltip) {
 
 	startup = function() {
-//		alert("running..");
+		alert("running..");
 //		query(".trigger").on("click", function(event) {
 //			event.preventDefault();
 //			var title = event.target.title;
